@@ -146,7 +146,6 @@
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
       z-index: 1;
     }
-    /* Efeito feixe de luz dourado / shimmer contínuo */
     .btn::after {
       content: '';
       position: absolute;
@@ -207,19 +206,6 @@
       45%, 100% {
         left: 170%;
       }
-    }
-
-    .btn-dark {
-      background: var(--forest);
-      color: var(--paper);
-      box-shadow: 0 6px 0 var(--forest-dark);
-    }
-    .btn-dark:hover {
-      background: #243b30;
-      box-shadow: 0 4px 0 var(--forest-dark);
-    }
-    .btn-dark:active {
-      box-shadow: 0 0 0 var(--forest-dark);
     }
 
     /* BARRA DE ESCASSEZ NO TOPO */
@@ -324,91 +310,189 @@
       color: var(--forest-dim);
     }
 
-    /* 2. BENEFÍCIOS */
-    .benefits-section {
-      background: var(--paper-dim);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    /* 2. VEJA UMA PRÉVIA DO CHEF CANINO */
+    .preview-section {
+      background: radial-gradient(circle at 50% 10%, rgba(47, 74, 60, 0.35), transparent 70%), #182A20;
+      color: var(--paper, #F6F1E4);
+      padding: 76px 0 84px;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 52px;
-      align-items: center;
+    .preview-section .eyebrow {
+      color: var(--mustard-light, #E9C769);
     }
-    .benefits-image {
+    .preview-section .eyebrow::before {
+      color: var(--mustard, #D4A017);
+    }
+    .preview-section .section-title {
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+    .preview-section .section-title span.highlight {
+      color: #FBE068;
+      font-style: italic;
+    }
+    .preview-section .section-subtitle {
+      color: rgba(246, 241, 228, 0.85);
+      margin-bottom: 32px;
+      max-width: 720px;
+    }
+
+    .preview-carousel-wrapper {
+      position: relative;
+      overflow: hidden;
       width: 100%;
+      padding: 16px 0 36px;
+      cursor: grab;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .preview-carousel-wrapper::before,
+    .preview-carousel-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 60px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .preview-carousel-wrapper::before {
+      left: 0;
+      background: linear-gradient(90deg, #182A20 0%, transparent 100%);
+    }
+    .preview-carousel-wrapper::after {
+      right: 0;
+      background: linear-gradient(-90deg, #182A20 0%, transparent 100%);
+    }
+
+    .preview-carousel-track {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 22px;
+      width: max-content;
+      will-change: transform;
+      animation: previewTickerContinuous 32s linear infinite;
     }
-    .benefits-image {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
+    .preview-carousel-wrapper:hover .preview-carousel-track,
+    .preview-carousel-wrapper.is-paused .preview-carousel-track {
+      animation-play-state: paused !important;
     }
-    .benefits-image img {
+    @keyframes previewTickerContinuous {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(calc(-50% - 11px), 0, 0);
+      }
+    }
+
+    .preview-page-card {
+      flex: 0 0 250px;
+      width: 250px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #FFFFFF;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      position: relative;
+    }
+    .preview-page-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.65), 0 0 20px rgba(212, 160, 23, 0.35);
+      border-color: rgba(233, 199, 105, 0.6);
+    }
+    .preview-page-card img {
       width: 100%;
-      max-width: 560px;
       height: auto;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      background: transparent;
+      aspect-ratio: 1 / 1.414;
+      object-fit: cover;
       display: block;
-      filter: drop-shadow(0 20px 32px rgba(43, 38, 34, 0.16));
-      transition: transform 0.3s ease, filter 0.3s ease;
+      pointer-events: none;
     }
-    .benefits-image img:hover {
-      transform: translateY(-6px) scale(1.02);
-      filter: drop-shadow(0 28px 44px rgba(43, 38, 34, 0.22));
+
+    .preview-benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 20px;
+      max-width: 960px;
+      margin: 20px auto 0;
     }
-    .benefits-list {
-      list-style: none;
+    .preview-benefit-pill {
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(246, 241, 228, 0.16);
+      border-radius: 18px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+    .preview-benefit-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(233, 199, 105, 0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    }
+    .preview-benefit-pill .check-icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(212, 160, 23, 0.2);
+      border: 1.5px solid var(--mustard-light, #E9C769);
+      color: #FBE068;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .preview-benefit-pill .pill-text {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 2px;
     }
-    .benefit-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      background: var(--paper);
-      padding: 18px 22px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--line);
-      box-shadow: 0 4px 12px rgba(43, 38, 34, 0.04);
-    }
-    .benefit-item .icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      background: var(--forest);
-      color: var(--paper);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .preview-benefit-pill .pill-text strong {
+      font-size: 15.5px;
       font-weight: 700;
-      font-size: 15px;
-      margin-top: 2px;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
     }
-    .benefit-item .text strong {
-      display: block;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-    .benefit-item .text p {
+    .preview-benefit-pill .pill-text span {
       font-size: 13.5px;
-      color: var(--ink-muted);
-      margin-top: 3px;
+      color: rgba(246, 241, 228, 0.78);
+      line-height: 1.35;
     }
-    @media (max-width: 900px) {
-      .benefits-grid { grid-template-columns: 1fr; gap: 32px; }
-      .benefits-image { max-width: 440px; margin: 0 auto; }
+
+    @media (max-width: 860px) {
+      .preview-benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .preview-page-card {
+        flex: 0 0 210px;
+        width: 210px;
+      }
+      .preview-carousel-wrapper::before,
+      .preview-carousel-wrapper::after {
+        width: 30px;
+      }
+      .preview-benefit-pill {
+        padding: 14px 18px;
+        border-radius: 16px;
+      }
+      .preview-benefit-pill .pill-text strong {
+        font-size: 14.5px;
+      }
+      .preview-benefit-pill .pill-text span {
+        font-size: 12.5px;
+      }
     }
 
     /* 3. PROVAS SOCIAIS (CARROSSEL COM ROLAGEM INFINITA CONTÍNUA) */
@@ -431,7 +515,6 @@
       will-change: transform;
       animation: continuousTicker 32s linear infinite;
     }
-    /* Pausa automática quando o mouse passa por cima OU quando o dedo toca no mobile */
     .carousel-container:hover .carousel-track,
     .carousel-container.is-paused .carousel-track {
       animation-play-state: paused !important;
@@ -528,32 +611,160 @@
       .vitrine-featured { grid-template-columns: 1fr; padding: 22px; gap: 24px; }
     }
 
-    /* 5. DESTAQUE CELULAR */
-    .mobile-highlight-section {
+    /* 5. VANTAGENS DO MÉTODO (TIGELAS) */
+    .bowls-benefits-section {
+      padding: 76px 0;
+      background-color: var(--paper, #F6F1E4);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line, rgba(43, 38, 34, 0.08));
+    }
+    .bowls-benefits-section .section-title {
       text-align: center;
-      background: var(--forest);
-      color: var(--paper);
-      padding: 56px 0;
+      margin-bottom: 10px;
     }
-    .mobile-highlight-section .section-title {
-      color: var(--paper);
+    .bowls-benefits-section .highlight-orange {
+      color: #E57A38;
     }
-    .mobile-highlight-section .section-subtitle {
-      color: #D8DED9;
+    .bowls-benefits-section .section-subtitle {
+      text-align: center;
+      font-size: 16.5px;
+      color: var(--ink-muted, #5A534B);
+      font-style: italic;
+      margin-bottom: 44px;
     }
-    .mobile-badge {
-      display: inline-block;
-      background: rgba(233, 199, 105, 0.2);
-      border: 1px solid var(--mustard-light);
-      color: var(--mustard-light);
-      padding: 6px 18px;
-      border-radius: 100px;
-      font-family: var(--font-mono);
-      font-size: 12px;
+
+    .bowls-slider-container {
+      position: relative;
+      width: 100%;
+      max-width: var(--wrap-max, 1080px);
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 10px 0 20px;
+    }
+    .bowls-slider-track {
+      display: flex;
+      gap: 32px;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+    .bowl-slide-card {
+      flex: 0 0 calc((100% - 64px) / 3);
+      max-width: calc((100% - 64px) / 3);
+      box-sizing: border-box;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      user-select: none;
+      cursor: default;
+    }
+    .bowl-slide-card:hover {
+      transform: translateY(-4px);
+    }
+    .bowl-image-wrap {
+      width: 220px;
+      height: 220px;
+      max-width: 100%;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .bowl-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.09));
+      transition: transform 0.35s ease;
+    }
+    .bowl-slide-card:hover .bowl-image-wrap img {
+      transform: scale(1.08);
+    }
+    .bowl-slide-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #E57A38;
+      margin-bottom: 12px;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bowl-slide-card p {
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      margin-bottom: 16px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-muted, #5A534B);
+      max-width: 310px;
+      margin: 0 auto;
+    }
+    .bowls-slider-nav {
+      position: absolute;
+      top: 110px;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid rgba(43, 38, 34, 0.12);
+      color: var(--ink, #2B2622);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+    }
+    .bowls-slider-nav:hover {
+      background: var(--paper-dim, #EFE7D4);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .bowls-slider-nav.prev { left: 6px; }
+    .bowls-slider-nav.next { right: 6px; }
+    .bowls-slider-nav svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+    }
+    .bowls-slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .bowls-slider-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(43, 38, 34, 0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+    .bowls-slider-dots .dot.active {
+      background: #E57A38;
+      width: 26px;
+      border-radius: 5px;
+    }
+    @media (max-width: 768px) {
+      .bowls-benefits-section { padding: 56px 0; }
+      .bowls-slider-container { padding: 10px 14px 20px; }
+      .bowls-slider-track { gap: 0; }
+      .bowl-slide-card { flex: 0 0 100%; max-width: 100%; padding: 0 20px; }
+      .bowl-image-wrap { width: 190px; height: 190px; margin-bottom: 18px; }
+      .bowl-slide-card h3 { font-size: 18px; min-height: auto; }
+      .bowl-slide-card p { font-size: 14.5px; }
+      .bowls-slider-nav { display: flex; }
     }
 
     /* 6. COMPARATIVO */
@@ -678,12 +889,12 @@
       .bonus-mockup { width: 145px; }
     }
 
-    /* 8. OFERTA & CHECKOUT CARD */
+    /* 8. OFERTA & PRICING CARD */
     .pricing-section {
       background: radial-gradient(circle at 50% 20%, rgba(212, 160, 23, 0.15), transparent 70%), var(--paper);
     }
     .pricing-card-wrapper {
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto;
       background: var(--paper-card);
       border: 2px solid var(--forest);
@@ -709,6 +920,22 @@
       letter-spacing: 0.1em;
       white-space: nowrap;
       box-shadow: 0 4px 10px rgba(43, 38, 34, 0.12);
+    }
+    .pricing-mockup-wrapper {
+      max-width: 360px;
+      margin: 18px auto 14px auto;
+      filter: drop-shadow(0 14px 26px rgba(43, 38, 34, 0.16));
+    }
+    .pricing-mockup-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .pricing-mockup-img:hover {
+      transform: scale(1.02);
     }
     .pricing-timer-box {
       background: var(--paper);
@@ -777,6 +1004,7 @@
     }
     @media (max-width: 768px) {
       .pricing-card-wrapper { padding: 32px 20px; }
+      .pricing-mockup-wrapper { max-width: 290px; margin: 14px auto 12px auto; }
       .price-wrap .current-val { font-size: 44px; }
     }
 
@@ -798,13 +1026,6 @@
       gap: 30px;
       box-shadow: 0 12px 28px rgba(43, 38, 34, 0.06);
     }
-    .guarantee-badge-svg {
-      flex-shrink: 0;
-      width: 190px;
-      height: 190px;
-      display: block;
-      filter: drop-shadow(0 10px 18px rgba(43, 38, 34, 0.18));
-    }
     .guarantee-content h3 {
       font-size: 24px;
       color: var(--forest);
@@ -817,7 +1038,6 @@
     }
     @media (max-width: 768px) {
       .guarantee-box { flex-direction: column; text-align: center; padding: 26px 20px; gap: 20px; }
-      .guarantee-badge-svg { width: 150px; height: 150px; }
     }
 
     /* 10. FAQ ACCORDION */
@@ -891,379 +1111,10 @@
       opacity: 0.95;
     }
     footer p { margin-bottom: 6px; }
-  
-        /* ==========================================================================
-       NOVA SECAO: VANTAGENS DO METODO (TIGELAS EM CARROSSEL INFINITO CONTINUO)
-       ========================================================================== */
-    
+  </style>
 
-    
-
-    
-
-    
-
-    /* Container do Ticker Infinito - Exatamente no estilo das Provas Sociais */
-    
-
-    
-
-    
-
-    /* Pausa ao passar o mouse ou segurar com o dedo */
-    
-
-    
-      100% {
-        transform: translate3d(calc(-50% - 16px), 0, 0);
-      }
-    }
-
-    /* Card de cada tigela */
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    @media (max-width: 768px) {
-      
-      
-      
-      
-      
-      
-      
-      
-        100% {
-          transform: translate3d(calc(-50% - 10px), 0, 0);
-        }
-      }
-    }
-
-    /* Carrossel Ativo em Todas as Telas (Desktop + Tablet + Mobile) */
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    @media (max-width: 768px) {
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    }
-
-    /* Grid para Desktop */
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    /* Estrutura Mobile (Carrossel com Setas) */
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    @media (max-width: 768px) {
-      
-      
-      
-      
-      
-      
-      
-    }
-
-  
-
-    /* ==========================================================================
-       SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS)
-       - Desktop: Mostra exatamente 3 tigelas na tela, deslizando 1 a 1 suavemente
-       - Mobile: Mostra 1 tigela por vez (1 a 1) com setas, dots e autoplay
-       - Ao passar o mouse / toque: pausa o auto-slide e da leve zoom na tigela
-       ========================================================================== */
-    .bowls-benefits-section {
-      padding: 76px 0;
-      background-color: var(--paper, #F6F1E4);
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line, rgba(43, 38, 34, 0.08));
-    }
-
-    .bowls-benefits-section .section-title {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .bowls-benefits-section .highlight-orange {
-      color: #E57A38;
-    }
-
-    .bowls-benefits-section .section-subtitle {
-      text-align: center;
-      font-size: 16.5px;
-      color: var(--ink-muted, #5A534B);
-      font-style: italic;
-      margin-bottom: 44px;
-    }
-
-    /* Container do Carrossel */
-    .bowls-slider-container {
-      position: relative;
-      width: 100%;
-      max-width: var(--wrap-max, 1080px);
-      margin: 0 auto;
-      overflow: hidden;
-      padding: 10px 0 20px;
-    }
-
-    .bowls-slider-track {
-      display: flex;
-      gap: 32px;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform;
-    }
-
-    /* Cada Card */
-    .bowl-slide-card {
-      flex: 0 0 calc((100% - 64px) / 3);
-      max-width: calc((100% - 64px) / 3);
-      box-sizing: border-box;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s ease;
-      user-select: none;
-      cursor: default;
-    }
-
-    .bowl-slide-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .bowl-image-wrap {
-      width: 220px;
-      height: 220px;
-      max-width: 100%;
-      margin: 0 auto 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .bowl-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.09));
-      transition: transform 0.35s ease;
-    }
-
-    /* Leve zoom na tigela ao passar o mouse */
-    .bowl-slide-card:hover .bowl-image-wrap img {
-      transform: scale(1.08);
-    }
-
-    .bowl-slide-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      line-height: 1.35;
-      color: #E57A38;
-      margin-bottom: 12px;
-      min-height: 54px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bowl-slide-card p {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--ink-muted, #5A534B);
-      max-width: 310px;
-      margin: 0 auto;
-    }
-
-    /* Botoes de Navegacao */
-    .bowls-slider-nav {
-      position: absolute;
-      top: 110px;
-      transform: translateY(-50%);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      border: 1px solid rgba(43, 38, 34, 0.12);
-      color: var(--ink, #2B2622);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s ease;
-    }
-
-    .bowls-slider-nav:hover {
-      background: var(--paper-dim, #EFE7D4);
-      transform: translateY(-50%) scale(1.08);
-    }
-
-    .bowls-slider-nav.prev {
-      left: 6px;
-    }
-
-    .bowls-slider-nav.next {
-      right: 6px;
-    }
-
-    .bowls-slider-nav svg {
-      width: 20px;
-      height: 20px;
-      stroke: currentColor;
-      stroke-width: 2.5;
-      fill: none;
-    }
-
-    /* Indicadores de bolinha */
-    .bowls-slider-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 24px;
-    }
-
-    .bowls-slider-dots .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(43, 38, 34, 0.2);
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      padding: 0;
-    }
-
-    .bowls-slider-dots .dot.active {
-      background: #E57A38;
-      width: 26px;
-      border-radius: 5px;
-    }
-
-    @media (max-width: 768px) {
-      .bowls-benefits-section {
-        padding: 56px 0;
-      }
-      .bowls-slider-container {
-        padding: 10px 14px 20px;
-      }
-      .bowls-slider-track {
-        gap: 0;
-      }
-      .bowl-slide-card {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding: 0 20px;
-      }
-      .bowl-image-wrap {
-        width: 190px;
-        height: 190px;
-        margin-bottom: 18px;
-      }
-      .bowl-slide-card h3 {
-        font-size: 18px;
-        min-height: auto;
-      }
-      .bowl-slide-card p {
-        font-size: 14.5px;
-      }
-      .bowls-slider-nav {
-        display: flex;
-      }
-    }
-</style>
   <!-- Meta Pixel & Rastreamento Completo Validado do Chef Canino -->
   <script>
-  /* Meta Pixel — carregamento imediato e assíncrono */
   (function(w,d){
     if(w.fbq)return;
     var n=w.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -1286,10 +1137,8 @@
     fbq('init','1038495935667524',{fbp:fbp,fbc:fbc});
     fbq('track','PageView');
 
-    /* dispara imediatamente (script assíncrono, não bloqueia a renderização) */
     load();
 
-    /* clique no checkout: repassa fbclid/fbp/utms e garante o envio dos eventos antes de sair da página */
     d.addEventListener('click',function(e){
       var a=e.target.closest('a[href*="pay.cakto.com.br/7rtwbks_1125001"]');
       if(!a)return;
@@ -1310,7 +1159,7 @@
         value: 27.00,
         currency: 'BRL'
       });
-      if(st!==2){ /* pixel ainda não carregou: espera até 800 ms para não perder o evento */
+      if(st!==2){
         e.preventDefault();
         var done=0,go=function(){if(!done){done=1;w.location.href=url.toString()}};
         load(function(){setTimeout(go,150)});
@@ -1319,38 +1168,6 @@
     });
   })(window,document);
   </script>
-
-
-  <style>
-    /* ANIMAÇÕES DA PÁGINA DE REFERÊNCIA */
-    @keyframes pulseCta {
-      0%, 100% { transform: scale(1); box-shadow: 0 4px 0 #8C650A, 0 8px 24px rgba(212,160,23,0.35); }
-      50% { transform: scale(1.025); box-shadow: 0 4px 0 #8C650A, 0 12px 32px rgba(212,160,23,0.55); }
-    }
-    .cta-btn {
-      animation: pulseCta 2.5s infinite ease-in-out;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
-    }
-    .cta-btn:hover {
-      animation: none;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #8C650A, 0 14px 30px rgba(212,160,23,0.45);
-    }
-    .cta-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 #8C650A;
-    }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-
 </head>
 <body>
 
@@ -1364,21 +1181,22 @@
     <div class="wrap">
       <div class="eyebrow">Alimentação Natural, Funcional & Prática</div>
       <h1>
-        Receitas caseiras, nutritivas e econômicas<br>
-        <span class="highlight">para o seu cão viver mais e melhor.</span>
+        Transforme a alimentação do seu cão
+        <span class="highlight">com receitas caseiras, nutritivas e econômicas.</span>
       </h1>
+   
+      <div class="hero-mockup-wrapper">
+        <img src="./mockup.png" alt="Chef Canino Kit Completo de Alimentação Natural" loading="eager">
+      </div>
+
       <p class="lede">
         Mais de 50 receitas práticas e funcionais elaboradas para a rotina real do seu pet, com ingredientes simples e acessíveis que você já tem em casa.
       </p>
 
-      <div class="hero-mockup-wrapper">
-        <img src="./hero.webp" alt="Chef Canino Kit Completo de Alimentação Natural" loading="eager">
-      </div>
-
       <div class="hero-pricing-box">
         <div class="hero-old-price">De R$ 113,70</div>
         <div class="hero-new-price-callout">Só hoje por apenas:</div>
-        <div class="hero-new-price"><small>R$</small> 27,00</div>
+        <div class="hero-new-price"><small>R$</small> 27,90</div>
         <p style="font-size: 13px; font-weight: 600; color: var(--ink-muted);">À vista no Pix ou Cartão de Crédito</p>
       </div>
 
@@ -1395,67 +1213,104 @@
     </div>
   </section>
 
-  <!-- 2. BENEFÍCIOS DO CHEF CANINO -->
-  <section class="benefits-section">
+  <!-- 2. VEJA UMA PRÉVIA DO CHEF CANINO (CARROSSEL AUTOMÁTICO DE PÁGINAS + CARDS DE BENEFÍCIOS) -->
+  <section class="preview-section" id="previa-chef-canino">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">O Que Você Vai Receber</div></div>
-      <h2 class="section-title">Benefícios do <span class="highlight">Chef Canino</span></h2>
-      <p class="section-subtitle">Tudo o que você e seu melhor amigo precisam para uma rotina alimentar rica, saudável e deliciosa.</p>
+      <div style="text-align: center;"><div class="eyebrow">Por Dentro do Material</div></div>
+      <h2 class="section-title">VEJA UMA PRÉVIA DO <span class="highlight">CHEF CANINO</span></h2>
+      <p class="section-subtitle">Dê uma olhada em como o conteúdo foi organizado: receitas completas, modo de preparo passo a passo e ingredientes simples.</p>
 
-      <div class="benefits-grid">
-        <div class="benefits-image">
-          <img src="./mockup.webp" alt="Chef Canino Mockup do Kit Completo" loading="lazy">
+      <!-- Carrossel Automático Contínuo de Páginas do Ebook -->
+      <div class="preview-carousel-wrapper" id="previewCarouselContainer">
+        <div class="preview-carousel-track" id="previewCarouselTrack">
+          <div class="preview-page-card"><img src="./pag1.png" alt="Página 1 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag2.png" alt="Página 2 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag3.png" alt="Página 3 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag4.png" alt="Página 4 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag5.png" alt="Página 5 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag6.png" alt="Página 6 do Guia Chef Canino" loading="lazy"></div>
+          <!-- Duplicatas para rolagem infinita contínua sem saltos -->
+          <div class="preview-page-card"><img src="./pag1.png" alt="Página 1 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag2.png" alt="Página 2 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag3.png" alt="Página 3 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag4.png" alt="Página 4 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag5.png" alt="Página 5 do Guia Chef Canino" loading="lazy"></div>
+          <div class="preview-page-card"><img src="./pag6.png" alt="Página 6 do Guia Chef Canino" loading="lazy"></div>
         </div>
-
-        <ul class="benefits-list">
-          <li class="benefit-item">
-            <div class="icon">✓</div>
-            <div class="text">
-              <strong>+50 Receitas Completas e Testadas</strong>
-              <p>Modo de preparo detalhado, passo a passo, do básico ao avançado.</p>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="icon">✓</div>
-            <div class="text">
-              <strong>Ingredientes Simples e Acessíveis</strong>
-              <p>Tudo o que você já encontra em qualquer feira ou supermercado.</p>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="icon">✓</div>
-            <div class="text">
-              <strong>Prático e Sem Complicação</strong>
-              <p>Economize tempo na cozinha preparando refeições nutritivas com rapidez.</p>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="icon">✓</div>
-            <div class="text">
-              <strong>Receitas Especiais de Bolos Pet</strong>
-              <p>Celebre as datas comemorativas do seu cão com receitas 100% seguras.</p>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="icon">✓</div>
-            <div class="text">
-              <strong>2 Bônus Exclusivos Inclusos</strong>
-              <p>Guia de Alimentação Saudável e E-book com 10 Receitas de Petiscos.</p>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="icon">✓</div>
-            <div class="text">
-              <strong>Acesso Imediato e Vitalício</strong>
-              <p>Consulte no celular, tablet ou computador sempre que quiser.</p>
-            </div>
-          </li>
-        </ul>
       </div>
 
-      <div style="text-align: center; margin-top: 36px;">
+      <!-- Grid de Benefícios estilo Modelo (2 Colunas com cantos arredondados) -->
+      <div class="preview-benefits-grid">
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>+50 Receitas Completas e Testadas</strong>
+            <span>Modo de preparo detalhado, passo a passo, do básico ao avançado</span>
+          </div>
+        </div>
+
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>Ingredientes Simples e Acessíveis</strong>
+            <span>Tudo o que você já encontra em qualquer feira ou supermercado</span>
+          </div>
+        </div>
+
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>Prático e Sem Complicação</strong>
+            <span>Economize tempo na cozinha preparando refeições nutritivas com rapidez</span>
+          </div>
+        </div>
+
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>Receitas Especiais de Bolos Pet</strong>
+            <span>Celebre as datas comemorativas do seu cão com receitas 100% seguras</span>
+          </div>
+        </div>
+
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>2 Bônus Exclusivos Inclusos</strong>
+            <span>Guia de Alimentação Saudável e E-book com 10 Receitas de Petiscos</span>
+          </div>
+        </div>
+
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>Tabela de Porções Diárias</strong>
+            <span>Quantidades exatas de acordo com o porte e o peso do seu cão</span>
+          </div>
+        </div>
+
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>Acesso Imediato e Vitalício</strong>
+            <span>Consulte no celular, tablet ou computador sempre que quiser</span>
+          </div>
+        </div>
+
+        <div class="preview-benefit-pill">
+          <span class="check-icon">✓</span>
+          <div class="pill-text">
+            <strong>Satisfação Garantida ou Reembolso</strong>
+            <span>7 dias de garantia incondicional para você testar com risco zero</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botão CTA Centrado Logo Após os Cards -->
+      <div style="text-align: center; margin-top: 40px;">
         <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link">
-          ADQUIRIR AGORA COM DESCONTO!
+          QUERO COMEÇAR AGORA!
+          <small>Acesso imediato ao kit completo com desconto</small>
         </a>
       </div>
     </div>
@@ -1469,7 +1324,7 @@
       <p class="section-subtitle">Veja o relato real de pessoas que já prepararam as receitas e viram a alegria dos seus cães.</p>
 
       <div class="carousel-container">
-                <div class="carousel-track" id="testimonialTrack">
+        <div class="carousel-track" id="testimonialTrack">
           <div class="carousel-item"><img src="./1.webp" alt="Depoimento WhatsApp Juliana Silva" loading="lazy"></div>
           <div class="carousel-item"><img src="./2.webp" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy"></div>
           <div class="carousel-item"><img src="./3.webp" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy"></div>
@@ -1514,19 +1369,13 @@
     </div>
   </section>
 
-  <!-- NOVA SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS) -->
-    <!-- NOVA SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS - CARROSSEL DESKTOP + MOBILE) -->
-    <!-- NOVA SECAO: VANTAGENS DO METODO (TIGELAS EM CARROSSEL INFINITO) -->
-    <!-- ==========================================
-       SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS)
-       ========================================== -->
+  <!-- 5. VANTAGENS DO MÉTODO (TIGELAS / BENEFÍCIOS) -->
   <section class="bowls-benefits-section" id="vantagens-metodo">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">• MÉTODO PASSO A PASSO</div></div>
+      <div style="text-align: center;"><div class="eyebrow">• COMIDA DE VERDADE •</div></div>
       <h2 class="section-title"><span class="highlight-orange">Veja as Vantagens</span> de Trocar a Ração por Comida de Verdade</h2>
       <p class="section-subtitle">Nunca foi tão simples aprender sobre alimentação natural para pets</p>
 
-      <!-- Carrossel de Tigelas: 3 na tela no Desktop / 1 por vez no Mobile -->
       <div class="bowls-slider-container" id="bowlsSliderContainer">
         <button class="bowls-slider-nav prev" id="bowlsPrevBtn" aria-label="Anterior">
           <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1563,7 +1412,7 @@
             <p>Receitas simples, ingredientes fáceis e passo a passo do Chef Canino.</p>
           </div>
 
-          <!-- CLONES PARA TRANSIÇÃO CONTÍNUA DE 1 A 1 NO DESKTOP -->
+          <!-- CLONES PARA TRANSIÇÃO CONTÍNUA NO DESKTOP -->
           <div class="bowl-slide-card" aria-hidden="true" data-clone="true">
             <div class="bowl-image-wrap">
               <img src="./benef-natu-1.png" alt="" loading="lazy">
@@ -1595,21 +1444,6 @@
           <button class="dot" data-index="2" aria-label="Slide 3"></button>
         </div>
       </div>
-    </div>
-  </section>
-
-
-  <!-- 5. DESTAQUE CELULAR -->
-  <section class="mobile-highlight-section">
-    <div class="wrap">
-      <span class="mobile-badge">📱 Praticidade na Cozinha</span>
-      <h2 class="section-title">Acesse tudo direto do seu <span style="font-style: italic; color: var(--mustard-light);">celular</span></h2>
-      <p class="section-subtitle" style="margin-bottom: 26px;">
-        Leve o guia para a bancada da cozinha! Abra no smartphone ou tablet enquanto separa os ingredientes e cozinha com rapidez.
-      </p>
-      <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn" style="max-width: 380px;">
-        QUERO ACESSAR PELO CELULAR
-      </a>
     </div>
   </section>
 
@@ -1689,8 +1523,13 @@
       <div class="pricing-card-wrapper">
         <div class="pricing-tag-top">🔥 Oferta Exclusiva & Limitada</div>
 
-        <h3 style="font-size: 28px; color: var(--forest); margin-top: 10px;">Kit Alimentação Natural</h3>
+       <h3 style="font-size: 24px; color: var(--forest); margin-top: 10px;">Oferta Completa:<br> Chef Canino +2 bõnus exclusivos.</h3>
         <p style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--mustard-dark); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Acesso Imediato e Vitalício</p>
+
+        <!-- Mockup do Kit Completo no Box da Oferta -->
+        <div class="pricing-mockup-wrapper">
+          <img src="./mockup-oferta.png" alt="Mockup do Kit Completo Chef Canino e Bônus" class="pricing-mockup-img" loading="lazy">
+        </div>
 
         <div class="pricing-timer-box">
           ⏳ ESSA OFERTA SE ENCERRA EM:
@@ -1711,7 +1550,7 @@
         <div class="price-wrap">
           <div class="old-val">De R$ 113,70</div>
           <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--forest); text-transform: uppercase; margin-top: 4px;">Por apenas:</div>
-          <div class="current-val"><small>R$</small> 27,00</div>
+          <div class="current-val"><small>R$</small> 27,90</div>
           <div class="installments">Pagamento único • Sem mensalidades</div>
         </div>
 
@@ -1728,148 +1567,17 @@
     </div>
   </section>
 
-  <!-- 9. GARANTIA -->
+  <!-- 9. GARANTIA (COM ESTILO INLINE DIRETO NO HTML, SEM DEPENDER DE CSS) -->
   <section class="guarantee-section">
     <div class="wrap">
       <div class="guarantee-box">
-        <svg class="guarantee-badge-svg" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Selo de Garantia 7 Dias 100% Ouro">
-  <defs>
-    <!-- Filtro de Sombra 3D -->
-    <filter id="gold-shadow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1a1408" flood-opacity="0.35"/>
-      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b37d14" flood-opacity="0.25"/>
-    </filter>
-    <filter id="inner-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff"/>
-      <feFlood flood-color="#fff6cc" flood-opacity="0.4"/>
-      <feComposite in2="shadowDiff" operator="in"/>
-      <feComposite in2="SourceGraphic" operator="over"/>
-    </filter>
+        <!-- SELO DE GARANTIA COM ESTILO EMBUTIDO DIRETO NA TAG: -->
+        <div style="flex-shrink: 0; width: 190px; max-width: 100%; display: flex; align-items: center; justify-content: center;">
+          <img src="./image.png" alt="Selo de Garantia Incondicional 7 Dias - 100% Devolução" style="width: 100%; max-width: 190px; height: auto; object-fit: contain; display: block; filter: drop-shadow(0 10px 20px rgba(43, 38, 34, 0.16));" loading="lazy">
+        </div>
 
-    <!-- Gradientes Metálicos Dourados Realistas -->
-    <linearGradient id="goldLinearOuter" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FDF0CD"/>
-      <stop offset="20%" stop-color="#D49B28"/>
-      <stop offset="40%" stop-color="#FCE196"/>
-      <stop offset="60%" stop-color="#C5841B"/>
-      <stop offset="80%" stop-color="#FDF4D4"/>
-      <stop offset="100%" stop-color="#9E680E"/>
-    </linearGradient>
-
-    <radialGradient id="goldRadialBevel" cx="50%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#FFF8E7"/>
-      <stop offset="25%" stop-color="#E5AD35"/>
-      <stop offset="60%" stop-color="#BD8019"/>
-      <stop offset="85%" stop-color="#8C5806"/>
-      <stop offset="100%" stop-color="#543302"/>
-    </radialGradient>
-
-    <linearGradient id="goldShine" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
-      <stop offset="35%" stop-color="#FFEAA5" stop-opacity="0.2"/>
-      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.9"/>
-      <stop offset="70%" stop-color="#C5841B" stop-opacity="0.1"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.4"/>
-    </linearGradient>
-
-    <linearGradient id="ribbonGold" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#8C5806"/>
-      <stop offset="15%" stop-color="#E5AD35"/>
-      <stop offset="50%" stop-color="#FFF4D0"/>
-      <stop offset="85%" stop-color="#E5AD35"/>
-      <stop offset="100%" stop-color="#8C5806"/>
-    </linearGradient>
-
-    <linearGradient id="darkCenter" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#24382E"/>
-      <stop offset="100%" stop-color="#14221B"/>
-    </linearGradient>
-
-    <!-- Path para texto arqueado superior -->
-    <path id="textArcTop" d="M 46 120 A 74 74 0 0 1 194 120" fill="none" />
-    <path id="textArcBottom" d="M 54 135 A 68 68 0 0 0 186 135" fill="none" />
-  </defs>
-
-  <!-- Medalhão com borda dentada/entalhada de sol -->
-  <g filter="url(#gold-shadow)">
-    <!-- 36 raios/entalhes da borda de selo clássico de cera/ouro -->
-    <path d="M 120 12 L 127 23 L 140 17 L 144 30 L 158 28 L 159 42 L 174 43 L 171 57 L 186 62 L 180 75 L 194 83 L 185 96 L 198 107 L 186 118 L 197 131 L 183 140 L 191 154 L 176 160 L 181 175 L 165 178 L 167 193 L 151 192 L 149 207 L 135 202 L 129 216 L 118 208 L 109 220 L 102 209 L 90 218 L 86 205 L 72 210 L 72 195 L 57 196 L 60 182 L 46 178 L 52 165 L 39 157 L 48 145 L 37 134 L 49 123 L 40 110 L 53 102 L 46 88 L 60 83 L 57 69 L 72 67 L 72 53 L 87 54 L 90 40 L 104 44 L 110 30 L 122 37 Z" fill="url(#goldLinearOuter)" />
-    
-    <!-- Anel Externo Chanfrado -->
-    <circle cx="120" cy="120" r="92" fill="url(#goldRadialBevel)" stroke="url(#goldLinearOuter)" stroke-width="3"/>
-    
-    <!-- Anel de detalhe pontilhado / pérolas de joalheria -->
-    <circle cx="120" cy="120" r="84" fill="none" stroke="#FDF0CD" stroke-width="1.5" stroke-dasharray="2.5 3.5" opacity="0.85"/>
-    
-    <!-- Anel fino interior -->
-    <circle cx="120" cy="120" r="77" fill="none" stroke="url(#goldLinearOuter)" stroke-width="2"/>
-
-    <!-- Núcleo do Selo: Fundo Nobre Floresta Escuro com Borda Dourada -->
-    <circle cx="120" cy="120" r="72" fill="url(#darkCenter)" stroke="url(#goldLinearOuter)" stroke-width="2.5"/>
-    <circle cx="120" cy="120" r="70" fill="url(#goldShine)" opacity="0.15"/>
-  </g>
-
-  <!-- Texto Superior Arqueado -->
-  <text fill="url(#goldLinearOuter)" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="2.8">
-    <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">
-      GARANTIA INCONDICIONAL
-    </textPath>
-  </text>
-
-  <!-- 5 Estrelas Douradas Superiores -->
-  <g fill="url(#goldLinearOuter)" transform="translate(120, 84) scale(0.85)">
-    <!-- Central -->
-    <polygon points="0,-7 2.1,-2.3 7.3,-1.7 3.5,1.9 4.6,7 0,4.4 -4.6,7 -3.5,1.9 -7.3,-1.7 -2.1,-2.3" transform="translate(0, -6) scale(1.1)"/>
-    <!-- Esquerda 1 -->
-    <polygon points="0,-7 2.1,-2.3 7.3,-1.7 3.5,1.9 4.6,7 0,4.4 -4.6,7 -3.5,1.9 -7.3,-1.7 -2.1,-2.3" transform="translate(-16, -3) scale(0.9)"/>
-    <!-- Esquerda 2 -->
-    <polygon points="0,-7 2.1,-2.3 7.3,-1.7 3.5,1.9 4.6,7 0,4.4 -4.6,7 -3.5,1.9 -7.3,-1.7 -2.1,-2.3" transform="translate(-30, 2) scale(0.75)"/>
-    <!-- Direita 1 -->
-    <polygon points="0,-7 2.1,-2.3 7.3,-1.7 3.5,1.9 4.6,7 0,4.4 -4.6,7 -3.5,1.9 -7.3,-1.7 -2.1,-2.3" transform="translate(16, -3) scale(0.9)"/>
-    <!-- Direita 2 -->
-    <polygon points="0,-7 2.1,-2.3 7.3,-1.7 3.5,1.9 4.6,7 0,4.4 -4.6,7 -3.5,1.9 -7.3,-1.7 -2.1,-2.3" transform="translate(30, 2) scale(0.75)"/>
-  </g>
-
-  <!-- Número 7 Gigante em Ouro Maciço 3D -->
-  <!-- Sombra do 7 -->
-  <text x="122" y="136" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="52" font-weight="900" fill="#000" opacity="0.4">7</text>
-  <!-- Texto 7 -->
-  <text x="120" y="134" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="52" font-weight="900" fill="url(#goldLinearOuter)">7</text>
-
-  <!-- Palavra DIAS abaixo do 7 -->
-  <text x="120" y="151" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="14" font-weight="900" letter-spacing="3" fill="#FFF4D0">DIAS</text>
-
-  <!-- Fita / Ribbon Dourada Inferior -->
-  <g filter="url(#gold-shadow)">
-    <!-- Pontas da Fita (Dobras Traseiras) -->
-    <path d="M 28 175 L 50 162 L 50 186 L 28 198 L 38 186 Z" fill="#7A4C05"/>
-    <path d="M 212 175 L 190 162 L 190 186 L 212 198 L 202 186 Z" fill="#7A4C05"/>
-    
-    <!-- Dobras de Sombra -->
-    <polygon points="46,183 54,183 54,192" fill="#422802"/>
-    <polygon points="194,183 186,183 186,192" fill="#422802"/>
-
-    <!-- Placa Principal da Fita Curva / Chanfrada -->
-    <path d="M 44 165 C 80 159, 160 159, 196 165 L 188 187 C 154 182, 86 182, 52 187 Z" fill="url(#ribbonGold)" stroke="url(#goldLinearOuter)" stroke-width="1.5"/>
-    
-    <!-- Linhas de borda fina na fita -->
-    <path d="M 48 168 C 82 163, 158 163, 192 168" fill="none" stroke="#FFEAA5" stroke-width="1" opacity="0.8"/>
-    <path d="M 55 184 C 88 180, 152 180, 185 184" fill="none" stroke="#9E680E" stroke-width="1" opacity="0.6"/>
-
-    <!-- Texto na Fita -->
-    <text x="120" y="178" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="900" letter-spacing="2" fill="#241B08">100% DEVOLUÇÃO</text>
-  </g>
-
-  <!-- Selo "RISCO ZERO" inferior no arco -->
-  <text fill="url(#goldLinearOuter)" font-family="Montserrat, Arial, sans-serif" font-size="9.5" font-weight="800" letter-spacing="2">
-    <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">
-      SATISFAÇÃO OU SEU DINHEIRO DE VOLTA
-    </textPath>
-  </text>
-</svg>
         <div class="guarantee-content">
-          <h3>Teste por 7 dias com risco zero!</h3>
+          <h3>Você tem 7 dias de garantia!</h3>
           <p>
             Queremos garantir ao máximo a sua satisfação e o bem-estar do seu cão. Por isso, você tem 7 dias para testar o material. Conheça as receitas com tranquilidade; se não atender às suas expectativas, basta solicitar o reembolso na plataforma que devolveremos 100% do seu investimento.
           </p>
@@ -1958,12 +1666,6 @@
           </div>
         </div>
       </div>
-
-      <div style="text-align: center; margin-top: 36px;">
-        <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link">
-          QUERO COMEÇAR AGORA!
-        </a>
-      </div>
     </div>
   </section>
 
@@ -1977,7 +1679,7 @@
       </p>
 
       <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link">
-        QUERO O KIT COMPLETO POR R$ 27,00
+        QUERO O KIT COMPLETO POR R$ 27,90
       </a>
 
       <div style="margin-top: 24px; display: flex; justify-content: center; gap: 20px; font-size: 13px; font-weight: 600; color: var(--ink-muted);">
@@ -1995,10 +1697,9 @@
     </div>
   </footer>
 
-  <!-- SCRIPT DE TRAQUEAMENTO COMPLETO (UTMs, FBCLID, FBC, FBP) & INTERATIVIDADE -->
+  <!-- SCRIPT DE TRAQUEAMENTO COMPLETO & INTERATIVIDADE -->
   <script>
     (function() {
-      // 1. CAPTURA E REPASSE DINÂMICO DE PARÂMETROS DE TRAQUEAMENTO
       function getQueryParams() {
         var params = {};
         var search = window.location.search.substring(1);
@@ -2022,7 +1723,6 @@
 
       var currentParams = getQueryParams();
 
-      // Tratamento de fbclid, fbc e fbp
       if (currentParams.fbclid && !currentParams.fbc) {
         currentParams.fbc = 'fb.1.' + (+new Date()) + '.' + currentParams.fbclid;
       }
@@ -2035,7 +1735,6 @@
         currentParams.fbc = cookieFbc;
       }
 
-      // Persistência em sessionStorage para não perder os parâmetros
       try {
         if (Object.keys(currentParams).length > 0) {
           sessionStorage.setItem('lp_tracking_params', JSON.stringify(currentParams));
@@ -2047,7 +1746,6 @@
         }
       } catch (e) {}
 
-      // Injeta os parâmetros em todos os botões de checkout
       function attachTrackingToLinks() {
         var links = document.querySelectorAll('a.checkout-link');
         links.forEach(function(link) {
@@ -2065,22 +1763,7 @@
 
       attachTrackingToLinks();
 
-    // Observer de scroll para efeito de fade-up
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.benefit-card, .bonus-card, .guarantee-box, .faq-item, .price-card, .hero-image-wrap').forEach(function(el) {
-      el.classList.add('fade-up');
-      observer.observe(el);
-    });
-
-
-      // 2. CRONÔMETRO DE 15 MINUTOS SINCRONIZADO
+      // Cronômetro sincronizado
       var timerDuration = 15 * 60;
       var timerKey = 'chef_canino_timer_end';
       var endTime = localStorage.getItem(timerKey);
@@ -2110,7 +1793,7 @@
       setInterval(updateTimer, 1000);
       updateTimer();
 
-      // 3. FAQ INTERATIVO ACCORDION
+      // FAQ Interativo
       document.querySelectorAll('.faq-question').forEach(function(q) {
         q.addEventListener('click', function() {
           var item = this.parentElement;
@@ -2124,44 +1807,25 @@
         });
       });
 
-      // 4. CARROSSEL INFINITO: PAUSA NO TOUCH E NO MOUSE
-      var carouselCont = document.querySelector('.carousel-container');
-      if (carouselCont) {
-        // Pausa no toque de celular/tablet e retoma ao soltar
-        carouselCont.addEventListener('touchstart', function() {
-          carouselCont.classList.add('is-paused');
+      // Pausa nos carrosséis com touch e hover
+      ['.carousel-container', '.preview-carousel-wrapper'].forEach(function(sel) {
+        var container = document.querySelector(sel);
+        if (!container) return;
+        container.addEventListener('touchstart', function() {
+          container.classList.add('is-paused');
         }, { passive: true });
-
-        carouselCont.addEventListener('touchend', function() {
-          carouselCont.classList.remove('is-paused');
+        container.addEventListener('touchend', function() {
+          container.classList.remove('is-paused');
         }, { passive: true });
-
-        carouselCont.addEventListener('touchcancel', function() {
-          carouselCont.classList.remove('is-paused');
+        container.addEventListener('touchcancel', function() {
+          container.classList.remove('is-paused');
         }, { passive: true });
-
-        // Eventos adicionais para ponteiros/canetas
-        carouselCont.addEventListener('pointerdown', function() {
-          carouselCont.classList.add('is-paused');
-        });
-        window.addEventListener('pointerup', function() {
-          carouselCont.classList.remove('is-paused');
-        });
-      }
+      });
     })();
   </script>
 
-
-
-
-<script>
-  // ==========================================================================
-  // CARROSSEL DE TIGELAS / VANTAGENS (DESKTOP E MOBILE)
-  // - Desktop: Mostra exatamente 3 na tela e anda 1 a 1 suavemente
-  // - Mobile: Mostra 1 por vez e anda 1 a 1 com setas e dots
-  // - Pausa automatica no hover (mouse) e no toque (touch)
-  // - Leve zoom suave na imagem da tigela ao passar o mouse
-  // ==========================================================================
+  <!-- Script das Tigelas -->
+  <script>
   (function() {
     var container = document.getElementById('bowlsSliderContainer');
     var track = document.getElementById('bowlsSliderTrack');
@@ -2273,7 +1937,6 @@
       });
     });
 
-    // Pausa no mouse hover (desktop)
     container.addEventListener('mouseenter', function() {
       isPaused = true;
     });
@@ -2281,7 +1944,6 @@
       isPaused = false;
     });
 
-    // Pausa no toque (mobile) + swipe
     var touchStartX = 0;
     var touchEndX = 0;
 
@@ -2309,6 +1971,6 @@
     updateTrackPosition(false);
     startAutoSlide();
   })();
-</script>
+  </script>
 </body>
 </html>
