@@ -892,8 +892,169 @@
     }
     footer p { margin-bottom: 6px; }
   
+        /* ==========================================================================
+       NOVA SECAO: VANTAGENS DO METODO (TIGELAS EM CARROSSEL INFINITO CONTINUO)
+       ========================================================================== */
+    
+
+    
+
+    
+
+    
+
+    /* Container do Ticker Infinito - Exatamente no estilo das Provas Sociais */
+    
+
+    
+
+    
+
+    /* Pausa ao passar o mouse ou segurar com o dedo */
+    
+
+    
+      100% {
+        transform: translate3d(calc(-50% - 16px), 0, 0);
+      }
+    }
+
+    /* Card de cada tigela */
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    @media (max-width: 768px) {
+      
+      
+      
+      
+      
+      
+      
+      
+        100% {
+          transform: translate3d(calc(-50% - 10px), 0, 0);
+        }
+      }
+    }
+
+    /* Carrossel Ativo em Todas as Telas (Desktop + Tablet + Mobile) */
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    @media (max-width: 768px) {
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    }
+
+    /* Grid para Desktop */
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    /* Estrutura Mobile (Carrossel com Setas) */
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    @media (max-width: 768px) {
+      
+      
+      
+      
+      
+      
+      
+    }
+
+  
+
     /* ==========================================================================
-       NOVA SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS)
+       SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS)
+       - Desktop: Mostra exatamente 3 tigelas na tela, deslizando 1 a 1 suavemente
+       - Mobile: Mostra 1 tigela por vez (1 a 1) com setas, dots e autoplay
+       - Ao passar o mouse / toque: pausa o auto-slide e da leve zoom na tigela
        ========================================================================== */
     .bowls-benefits-section {
       padding: 76px 0;
@@ -920,23 +1081,38 @@
       margin-bottom: 44px;
     }
 
-    /* Grid para Desktop */
-    .bowls-desktop-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 36px;
-      align-items: stretch;
+    /* Container do Carrossel */
+    .bowls-slider-container {
+      position: relative;
+      width: 100%;
+      max-width: var(--wrap-max, 1080px);
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 10px 0 20px;
     }
 
-    .bowl-card {
+    .bowls-slider-track {
+      display: flex;
+      gap: 32px;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    /* Cada Card */
+    .bowl-slide-card {
+      flex: 0 0 calc((100% - 64px) / 3);
+      max-width: calc((100% - 64px) / 3);
+      box-sizing: border-box;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: transform 0.3s ease;
+      user-select: none;
+      cursor: default;
     }
 
-    .bowl-card:hover {
+    .bowl-slide-card:hover {
       transform: translateY(-4px);
     }
 
@@ -956,14 +1132,15 @@
       height: 100%;
       object-fit: contain;
       filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.09));
-      transition: transform 0.3s ease;
+      transition: transform 0.35s ease;
     }
 
-    .bowl-card:hover .bowl-image-wrap img {
-      transform: scale(1.05);
+    /* Leve zoom na tigela ao passar o mouse */
+    .bowl-slide-card:hover .bowl-image-wrap img {
+      transform: scale(1.08);
     }
 
-    .bowl-card h3 {
+    .bowl-slide-card h3 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
       font-size: 20px;
@@ -976,7 +1153,7 @@
       justify-content: center;
     }
 
-    .bowl-card p {
+    .bowl-slide-card p {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       font-size: 15px;
@@ -986,124 +1163,104 @@
       margin: 0 auto;
     }
 
-    /* Estrutura Mobile (Carrossel com Setas) */
-    .bowls-mobile-carousel {
-      display: none;
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      margin: 0 auto;
-      overflow: hidden;
-      padding: 10px 0 20px;
-    }
-
-    .bowls-carousel-track {
-      display: flex;
-      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-      width: 100%;
-    }
-
-    .bowls-carousel-slide {
-      min-width: 100%;
-      box-sizing: border-box;
-      text-align: center;
-      padding: 0 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .bowls-carousel-nav {
+    /* Botoes de Navegacao */
+    .bowls-slider-nav {
       position: absolute;
-      top: 120px;
+      top: 110px;
       transform: translateY(-50%);
-      background: #FFFFFF;
-      border: 1px solid rgba(43, 38, 34, 0.15);
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      display: flex;
+      background: #FFFFFF;
+      border: 1px solid rgba(43, 38, 34, 0.12);
+      color: var(--ink, #2B2622);
+      display: none;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 10;
-      color: #2B2622;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-      transition: background 0.2s, transform 0.2s;
-      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
     }
 
-    .bowls-carousel-nav:hover {
+    .bowls-slider-nav:hover {
+      background: var(--paper-dim, #EFE7D4);
       transform: translateY(-50%) scale(1.08);
     }
 
-    .bowls-carousel-nav.prev {
+    .bowls-slider-nav.prev {
       left: 6px;
     }
 
-    .bowls-carousel-nav.next {
+    .bowls-slider-nav.next {
       right: 6px;
     }
 
-    .bowls-carousel-nav svg {
+    .bowls-slider-nav svg {
       width: 20px;
       height: 20px;
-      stroke: #2B2622;
-      stroke-width: 2.4;
+      stroke: currentColor;
+      stroke-width: 2.5;
       fill: none;
     }
 
-    .bowls-carousel-dots {
+    /* Indicadores de bolinha */
+    .bowls-slider-dots {
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-top: 18px;
+      margin-top: 24px;
     }
 
-    .bowls-carousel-dots .dot {
+    .bowls-slider-dots .dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: rgba(43, 38, 34, 0.22);
-      transition: background 0.3s, transform 0.3s;
+      background: rgba(43, 38, 34, 0.2);
+      border: none;
       cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
     }
 
-    .bowls-carousel-dots .dot.active {
+    .bowls-slider-dots .dot.active {
       background: #E57A38;
-      transform: scale(1.25);
+      width: 26px;
+      border-radius: 5px;
     }
 
     @media (max-width: 768px) {
-      .bowls-desktop-grid {
-        display: none;
-      }
-      .bowls-mobile-carousel {
-        display: block;
-      }
       .bowls-benefits-section {
-        padding: 52px 0;
+        padding: 56px 0;
       }
-      .bowls-benefits-section .section-subtitle {
-        margin-bottom: 24px;
-        font-size: 15px;
+      .bowls-slider-container {
+        padding: 10px 14px 20px;
+      }
+      .bowls-slider-track {
+        gap: 0;
+      }
+      .bowl-slide-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0 20px;
       }
       .bowl-image-wrap {
-        width: 210px;
-        height: 210px;
-        margin-bottom: 16px;
+        width: 190px;
+        height: 190px;
+        margin-bottom: 18px;
       }
-      .bowl-card h3 {
+      .bowl-slide-card h3 {
+        font-size: 18px;
         min-height: auto;
-        font-size: 18.5px;
-        margin-bottom: 10px;
       }
-      .bowl-card p {
+      .bowl-slide-card p {
         font-size: 14.5px;
       }
+      .bowls-slider-nav {
+        display: flex;
+      }
     }
-
-  </style>
+</style>
   <!-- Meta Pixel & Rastreamento Completo Validado do Chef Canino -->
   <script>
   /* Meta Pixel — carregamento imediato e assíncrono */
@@ -1205,7 +1362,7 @@
   <!-- 1. HERO SECTION -->
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">Alimentação Natural & Prática</div>
+      <div class="eyebrow">Alimentação Natural, Funcional & Prática</div>
       <h1>
         Receitas caseiras, nutritivas e econômicas<br>
         <span class="highlight">para o seu cão viver mais e melhor.</span>
@@ -1358,84 +1515,84 @@
   </section>
 
   <!-- NOVA SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS) -->
+    <!-- NOVA SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS - CARROSSEL DESKTOP + MOBILE) -->
+    <!-- NOVA SECAO: VANTAGENS DO METODO (TIGELAS EM CARROSSEL INFINITO) -->
+    <!-- ==========================================
+       SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS)
+       ========================================== -->
   <section class="bowls-benefits-section" id="vantagens-metodo">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">M&eacute;todo Passo a Passo</div></div>
+      <div style="text-align: center;"><div class="eyebrow">• MÉTODO PASSO A PASSO</div></div>
       <h2 class="section-title"><span class="highlight-orange">Veja as Vantagens</span> de Trocar a Ração por Comida de Verdade</h2>
-      <p class="section-subtitle">Nunca foi t&atilde;o simples aprender sobre alimenta&ccedil;&atilde;o natural para pets</p>
+      <p class="section-subtitle">Nunca foi tão simples aprender sobre alimentação natural para pets</p>
 
-      <!-- Desktop: Exibicao Lado a Lado (3 Colunas) -->
-      <div class="bowls-desktop-grid">
-        <div class="bowl-card">
-          <div class="bowl-image-wrap">
-            <img src="./benef-natu-1.png" alt="Tigela com frango, br&oacute;colis e abobrinha" loading="lazy">
-          </div>
-          <h3>Diga adeus aos riscos dos ultraprocessados no prato dele</h3>
-          <p>Com o Chef Canino, você prepara receitas naturais e sabe o que vai no prato.</p>
-        </div>
-
-        <div class="bowl-card">
-          <div class="bowl-image-wrap">
-            <img src="./benef-natu-3.png" alt="Tigela com carne, cenoura e abobrinha" loading="lazy">
-          </div>
-          <h3>Mais saúde para quem você ama.</h3>
-          <p>Ingredientes frescos para uma alimentação mais natural e nutritiva.</p>
-        </div>
-
-        <div class="bowl-card">
-          <div class="bowl-image-wrap">
-            <img src="./benef-natu-2.png" alt="Tigela com carne, ovo e cenoura" loading="lazy">
-          </div>
-          <h3>Aprenda tudo mesmo se for totalmente iniciante</h3>
-          <p>Receitas simples, ingredientes fáceis e passo a passo do Chef Canino.</p>
-        </div>
-      </div>
-
-      <!-- Mobile: Carrossel Automatico com Setas e Indicadores -->
-      <div class="bowls-mobile-carousel" id="bowlsMobileCarousel">
-        <button class="bowls-carousel-nav prev" id="bowlsPrevBtn" aria-label="Anterior">
+      <!-- Carrossel de Tigelas: 3 na tela no Desktop / 1 por vez no Mobile -->
+      <div class="bowls-slider-container" id="bowlsSliderContainer">
+        <button class="bowls-slider-nav prev" id="bowlsPrevBtn" aria-label="Anterior">
           <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <button class="bowls-carousel-nav next" id="bowlsNextBtn" aria-label="Pr&oacute;ximo">
+        <button class="bowls-slider-nav next" id="bowlsNextBtn" aria-label="Próximo">
           <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
 
-        <div class="bowls-carousel-track" id="bowlsCarouselTrack">
-          <div class="bowls-carousel-slide">
-            <div class="bowl-card">
-              <div class="bowl-image-wrap">
-                <img src="./benef-natu-1.png" alt="Tigela com frango, br&oacute;colis e abobrinha" loading="lazy">
-              </div>
-              <h3>Aprimore e evolua suas t&eacute;cnicas e conhecimentos</h3>
-              <p>Para voc&ecirc; que j&aacute; atua na &aacute;rea ou j&aacute; arrisca fazendo comida para pet e deseja evoluir suas t&eacute;cnicas.</p>
+        <div class="bowls-slider-track" id="bowlsSliderTrack">
+          <!-- CARD 1 -->
+          <div class="bowl-slide-card" data-index="0">
+            <div class="bowl-image-wrap">
+              <img src="./benef-natu-1.png" alt="Tigela com frango, brócolis e abobrinha" loading="lazy">
             </div>
+            <h3>Diga adeus aos riscos dos ultraprocessados no prato dele</h3>
+            <p>Com o Chef Canino, você prepara receitas naturais e sabe o que vai no prato.</p>
           </div>
 
-          <div class="bowls-carousel-slide">
-            <div class="bowl-card">
-              <div class="bowl-image-wrap">
-                <img src="./benef-natu-3.png" alt="Tigela com carne, cenoura e abobrinha" loading="lazy">
-              </div>
-              <h3>Conquiste muito mais clientes e bons resultados</h3>
-              <p>Essa &eacute; sua chance de pegar um atalho e entrar em uma das profiss&otilde;es que mais crescem.</p>
+          <!-- CARD 2 -->
+          <div class="bowl-slide-card" data-index="1">
+            <div class="bowl-image-wrap">
+              <img src="./benef-natu-3.png" alt="Tigela com carne, cenoura e abobrinha" loading="lazy">
             </div>
+            <h3>Mais saúde para quem você ama.</h3>
+            <p>Ingredientes frescos para uma alimentação mais natural e nutritiva.</p>
           </div>
 
-          <div class="bowls-carousel-slide">
-            <div class="bowl-card">
-              <div class="bowl-image-wrap">
-                <img src="./benef-natu-2.png" alt="Tigela com carne, ovo e cenoura" loading="lazy">
-              </div>
-              <h3>Aprenda tudo mesmo se for totalmente iniciante</h3>
-              <p>M&eacute;todo passo a passo, totalmente did&aacute;tico, n&atilde;o importa se voc&ecirc; n&atilde;o possui conhecimento na &aacute;rea.</p>
+          <!-- CARD 3 -->
+          <div class="bowl-slide-card" data-index="2">
+            <div class="bowl-image-wrap">
+              <img src="./benef-natu-2.png" alt="Tigela com carne, ovo e cenoura" loading="lazy">
             </div>
+            <h3>Aprenda tudo mesmo se for totalmente iniciante</h3>
+            <p>Receitas simples, ingredientes fáceis e passo a passo do Chef Canino.</p>
+          </div>
+
+          <!-- CLONES PARA TRANSIÇÃO CONTÍNUA DE 1 A 1 NO DESKTOP -->
+          <div class="bowl-slide-card" aria-hidden="true" data-clone="true">
+            <div class="bowl-image-wrap">
+              <img src="./benef-natu-1.png" alt="" loading="lazy">
+            </div>
+            <h3>Diga adeus aos riscos dos ultraprocessados no prato dele</h3>
+            <p>Com o Chef Canino, você prepara receitas naturais e sabe o que vai no prato.</p>
+          </div>
+
+          <div class="bowl-slide-card" aria-hidden="true" data-clone="true">
+            <div class="bowl-image-wrap">
+              <img src="./benef-natu-3.png" alt="" loading="lazy">
+            </div>
+            <h3>Mais saúde para quem você ama.</h3>
+            <p>Ingredientes frescos para uma alimentação mais natural e nutritiva.</p>
+          </div>
+
+          <div class="bowl-slide-card" aria-hidden="true" data-clone="true">
+            <div class="bowl-image-wrap">
+              <img src="./benef-natu-2.png" alt="" loading="lazy">
+            </div>
+            <h3>Aprenda tudo mesmo se for totalmente iniciante</h3>
+            <p>Receitas simples, ingredientes fáceis e passo a passo do Chef Canino.</p>
           </div>
         </div>
 
-        <div class="bowls-carousel-dots" id="bowlsCarouselDots">
-          <span class="dot active" data-index="0"></span>
-          <span class="dot" data-index="1"></span>
-          <span class="dot" data-index="2"></span>
+        <div class="bowls-slider-dots" id="bowlsSliderDots">
+          <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="dot" data-index="2" aria-label="Slide 3"></button>
         </div>
       </div>
     </div>
@@ -1993,78 +2150,165 @@
       }
     })();
   </script>
-<script>
 
-  // ==========================================
-  // CARROSSEL MOBILE DE TIGELAS / BENEFICIOS
-  // ==========================================
+
+
+
+<script>
+  // ==========================================================================
+  // CARROSSEL DE TIGELAS / VANTAGENS (DESKTOP E MOBILE)
+  // - Desktop: Mostra exatamente 3 na tela e anda 1 a 1 suavemente
+  // - Mobile: Mostra 1 por vez e anda 1 a 1 com setas e dots
+  // - Pausa automatica no hover (mouse) e no toque (touch)
+  // - Leve zoom suave na imagem da tigela ao passar o mouse
+  // ==========================================================================
   (function() {
-    var carousel = document.getElementById('bowlsMobileCarousel');
-    var track = document.getElementById('bowlsCarouselTrack');
+    var container = document.getElementById('bowlsSliderContainer');
+    var track = document.getElementById('bowlsSliderTrack');
     var prevBtn = document.getElementById('bowlsPrevBtn');
     var nextBtn = document.getElementById('bowlsNextBtn');
-    var dots = document.querySelectorAll('#bowlsCarouselDots .dot');
-    if (!carousel || !track || !dots.length) return;
+    var dots = document.querySelectorAll('#bowlsSliderDots .dot');
+    if (!container || !track) return;
 
     var currentIndex = 0;
-    var totalSlides = dots.length;
+    var totalRealSlides = 3;
     var timer = null;
     var isPaused = false;
+    var isTransitioning = false;
 
-    function goToSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      currentIndex = index;
-      track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    function updateTrackPosition(animate) {
+      if (!animate) {
+        track.style.transition = 'none';
+      } else {
+        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      }
+
+      var card = track.querySelector('.bowl-slide-card');
+      if (!card) return;
+
+      var gap = isMobile() ? 0 : 32;
+      var cardWidth = card.getBoundingClientRect().width;
+      var step = cardWidth + gap;
+
+      var offset = currentIndex * step;
+      track.style.transform = 'translate3d(-' + offset + 'px, 0, 0)';
+
+      var activeDotIndex = currentIndex % totalRealSlides;
       dots.forEach(function(dot, i) {
-        dot.classList.toggle('active', i === currentIndex);
+        dot.classList.toggle('active', i === activeDotIndex);
       });
+    }
+
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
+      updateTrackPosition(true);
+
+      setTimeout(function() {
+        if (currentIndex >= totalRealSlides) {
+          currentIndex = 0;
+          updateTrackPosition(false);
+        }
+        isTransitioning = false;
+      }, 620);
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (currentIndex <= 0) {
+        currentIndex = totalRealSlides;
+        updateTrackPosition(false);
+        void track.offsetWidth;
+      }
+      setTimeout(function() {
+        currentIndex--;
+        updateTrackPosition(true);
+        setTimeout(function() {
+          isTransitioning = false;
+        }, 620);
+      }, 20);
     }
 
     function startAutoSlide() {
       stopAutoSlide();
+      var interval = isMobile() ? 3500 : 4200;
       timer = setInterval(function() {
-        if (!isPaused) goToSlide(currentIndex + 1);
-      }, 3500);
+        if (!isPaused) {
+          nextSlide();
+        }
+      }, interval);
     }
 
     function stopAutoSlide() {
-      if (timer) { clearInterval(timer); timer = null; }
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
     }
 
-    if (prevBtn) prevBtn.addEventListener('click', function() { goToSlide(currentIndex - 1); startAutoSlide(); });
-    if (nextBtn) nextBtn.addEventListener('click', function() { goToSlide(currentIndex + 1); startAutoSlide(); });
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        nextSlide();
+        startAutoSlide();
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        prevSlide();
+        startAutoSlide();
+      });
+    }
 
-    dots.forEach(function(dot) {
+    dots.forEach(function(dot, i) {
       dot.addEventListener('click', function() {
-        goToSlide(parseInt(this.getAttribute('data-index'), 10));
+        currentIndex = i;
+        updateTrackPosition(true);
         startAutoSlide();
       });
     });
 
-    carousel.addEventListener('mouseenter', function() { isPaused = true; });
-    carousel.addEventListener('mouseleave', function() { isPaused = false; });
-    carousel.addEventListener('touchstart', function() { isPaused = true; }, { passive: true });
-
-    var startX = 0;
-    carousel.addEventListener('touchend', function(e) {
+    // Pausa no mouse hover (desktop)
+    container.addEventListener('mouseenter', function() {
+      isPaused = true;
+    });
+    container.addEventListener('mouseleave', function() {
       isPaused = false;
-      if (e.changedTouches && e.changedTouches[0]) {
-        var diffX = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diffX) > 40) {
-          goToSlide(diffX > 0 ? currentIndex + 1 : currentIndex - 1);
-        }
-      }
-      startAutoSlide();
-    }, { passive: true });
-    carousel.addEventListener('touchstart', function(e) {
-      if (e.touches && e.touches[0]) startX = e.touches[0].clientX;
+    });
+
+    // Pausa no toque (mobile) + swipe
+    var touchStartX = 0;
+    var touchEndX = 0;
+
+    container.addEventListener('touchstart', function(e) {
+      isPaused = true;
+      touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
 
+    container.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+      setTimeout(function() {
+        isPaused = false;
+      }, 1000);
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
+      updateTrackPosition(false);
+    });
+
+    updateTrackPosition(false);
     startAutoSlide();
   })();
-
 </script>
-
 </body>
 </html>
