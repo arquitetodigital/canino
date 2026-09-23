@@ -891,6 +891,218 @@
       opacity: 0.95;
     }
     footer p { margin-bottom: 6px; }
+  
+    /* ==========================================================================
+       NOVA SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS)
+       ========================================================================== */
+    .bowls-benefits-section {
+      padding: 76px 0;
+      background-color: var(--paper, #F6F1E4);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line, rgba(43, 38, 34, 0.08));
+    }
+
+    .bowls-benefits-section .section-title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .bowls-benefits-section .highlight-orange {
+      color: #E57A38;
+    }
+
+    .bowls-benefits-section .section-subtitle {
+      text-align: center;
+      font-size: 16.5px;
+      color: var(--ink-muted, #5A534B);
+      font-style: italic;
+      margin-bottom: 44px;
+    }
+
+    /* Grid para Desktop */
+    .bowls-desktop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .bowl-card {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .bowl-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .bowl-image-wrap {
+      width: 220px;
+      height: 220px;
+      max-width: 100%;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .bowl-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.09));
+      transition: transform 0.3s ease;
+    }
+
+    .bowl-card:hover .bowl-image-wrap img {
+      transform: scale(1.05);
+    }
+
+    .bowl-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #E57A38;
+      margin-bottom: 12px;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bowl-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-muted, #5A534B);
+      max-width: 310px;
+      margin: 0 auto;
+    }
+
+    /* Estrutura Mobile (Carrossel com Setas) */
+    .bowls-mobile-carousel {
+      display: none;
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 10px 0 20px;
+    }
+
+    .bowls-carousel-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      width: 100%;
+    }
+
+    .bowls-carousel-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 0 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bowls-carousel-nav {
+      position: absolute;
+      top: 120px;
+      transform: translateY(-50%);
+      background: #FFFFFF;
+      border: 1px solid rgba(43, 38, 34, 0.15);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      color: #2B2622;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      transition: background 0.2s, transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .bowls-carousel-nav:hover {
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .bowls-carousel-nav.prev {
+      left: 6px;
+    }
+
+    .bowls-carousel-nav.next {
+      right: 6px;
+    }
+
+    .bowls-carousel-nav svg {
+      width: 20px;
+      height: 20px;
+      stroke: #2B2622;
+      stroke-width: 2.4;
+      fill: none;
+    }
+
+    .bowls-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .bowls-carousel-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(43, 38, 34, 0.22);
+      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .bowls-carousel-dots .dot.active {
+      background: #E57A38;
+      transform: scale(1.25);
+    }
+
+    @media (max-width: 768px) {
+      .bowls-desktop-grid {
+        display: none;
+      }
+      .bowls-mobile-carousel {
+        display: block;
+      }
+      .bowls-benefits-section {
+        padding: 52px 0;
+      }
+      .bowls-benefits-section .section-subtitle {
+        margin-bottom: 24px;
+        font-size: 15px;
+      }
+      .bowl-image-wrap {
+        width: 210px;
+        height: 210px;
+        margin-bottom: 16px;
+      }
+      .bowl-card h3 {
+        min-height: auto;
+        font-size: 18.5px;
+        margin-bottom: 10px;
+      }
+      .bowl-card p {
+        font-size: 14.5px;
+      }
+    }
+
   </style>
   <!-- Meta Pixel & Rastreamento Completo Validado do Chef Canino -->
   <script>
@@ -1101,19 +1313,19 @@
 
       <div class="carousel-container">
                 <div class="carousel-track" id="testimonialTrack">
-          <div class="carousel-item"><img src="./1.png" alt="Depoimento WhatsApp Juliana Silva" loading="lazy"></div>
-          <div class="carousel-item"><img src="./2.png" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy"></div>
-          <div class="carousel-item"><img src="./3.png" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy"></div>
-          <div class="carousel-item"><img src="./4.png" alt="Depoimento WhatsApp Gustavo" loading="lazy"></div>
-          <div class="carousel-item"><img src="./5.png" alt="Depoimento WhatsApp Camila" loading="lazy"></div>
-          <div class="carousel-item"><img src="./6.png" alt="Depoimento WhatsApp Diego" loading="lazy"></div>
+          <div class="carousel-item"><img src="./1.webp" alt="Depoimento WhatsApp Juliana Silva" loading="lazy"></div>
+          <div class="carousel-item"><img src="./2.webp" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy"></div>
+          <div class="carousel-item"><img src="./3.webp" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy"></div>
+          <div class="carousel-item"><img src="./4.webp" alt="Depoimento WhatsApp Gustavo" loading="lazy"></div>
+          <div class="carousel-item"><img src="./5.webp" alt="Depoimento WhatsApp Camila" loading="lazy"></div>
+          <div class="carousel-item"><img src="./6.webp" alt="Depoimento WhatsApp Diego" loading="lazy"></div>
           <!-- Cópia duplicada para loop infinito 100% contínuo sem saltos -->
-          <div class="carousel-item"><img src="./1.png" alt="Depoimento WhatsApp Juliana Silva" loading="lazy"></div>
-          <div class="carousel-item"><img src="./2.png" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy"></div>
-          <div class="carousel-item"><img src="./3.png" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy"></div>
-          <div class="carousel-item"><img src="./4.png" alt="Depoimento WhatsApp Gustavo" loading="lazy"></div>
-          <div class="carousel-item"><img src="./5.png" alt="Depoimento WhatsApp Camila" loading="lazy"></div>
-          <div class="carousel-item"><img src="./6.png" alt="Depoimento WhatsApp Diego" loading="lazy"></div>
+          <div class="carousel-item"><img src="./1.webp" alt="Depoimento WhatsApp Juliana Silva" loading="lazy"></div>
+          <div class="carousel-item"><img src="./2.webp" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy"></div>
+          <div class="carousel-item"><img src="./3.webp" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy"></div>
+          <div class="carousel-item"><img src="./4.webp" alt="Depoimento WhatsApp Gustavo" loading="lazy"></div>
+          <div class="carousel-item"><img src="./5.webp" alt="Depoimento WhatsApp Camila" loading="lazy"></div>
+          <div class="carousel-item"><img src="./6.webp" alt="Depoimento WhatsApp Diego" loading="lazy"></div>
         </div>
         <p class="carousel-hint">A rolagem pausa ao passar o mouse ou tocar. →</p>
       </div>
@@ -1144,6 +1356,91 @@
       </div>
     </div>
   </section>
+
+  <!-- NOVA SECAO: VANTAGENS DO METODO (TIGELAS / BENEFICIOS) -->
+  <section class="bowls-benefits-section" id="vantagens-metodo">
+    <div class="wrap">
+      <div style="text-align: center;"><div class="eyebrow">M&eacute;todo Passo a Passo</div></div>
+      <h2 class="section-title"><span class="highlight-orange">Veja as Vantagens</span> de Trocar a Ração por Comida de Verdade</h2>
+      <p class="section-subtitle">Nunca foi t&atilde;o simples aprender sobre alimenta&ccedil;&atilde;o natural para pets</p>
+
+      <!-- Desktop: Exibicao Lado a Lado (3 Colunas) -->
+      <div class="bowls-desktop-grid">
+        <div class="bowl-card">
+          <div class="bowl-image-wrap">
+            <img src="./benef-natu-1.png" alt="Tigela com frango, br&oacute;colis e abobrinha" loading="lazy">
+          </div>
+          <h3>Diga adeus aos riscos dos ultraprocessados no prato dele</h3>
+          <p>Com o Chef Canino, você prepara receitas naturais e sabe o que vai no prato.</p>
+        </div>
+
+        <div class="bowl-card">
+          <div class="bowl-image-wrap">
+            <img src="./benef-natu-3.png" alt="Tigela com carne, cenoura e abobrinha" loading="lazy">
+          </div>
+          <h3>Mais saúde para quem você ama.</h3>
+          <p>Ingredientes frescos para uma alimentação mais natural e nutritiva.</p>
+        </div>
+
+        <div class="bowl-card">
+          <div class="bowl-image-wrap">
+            <img src="./benef-natu-2.png" alt="Tigela com carne, ovo e cenoura" loading="lazy">
+          </div>
+          <h3>Aprenda tudo mesmo se for totalmente iniciante</h3>
+          <p>Receitas simples, ingredientes fáceis e passo a passo do Chef Canino.</p>
+        </div>
+      </div>
+
+      <!-- Mobile: Carrossel Automatico com Setas e Indicadores -->
+      <div class="bowls-mobile-carousel" id="bowlsMobileCarousel">
+        <button class="bowls-carousel-nav prev" id="bowlsPrevBtn" aria-label="Anterior">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="bowls-carousel-nav next" id="bowlsNextBtn" aria-label="Pr&oacute;ximo">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="bowls-carousel-track" id="bowlsCarouselTrack">
+          <div class="bowls-carousel-slide">
+            <div class="bowl-card">
+              <div class="bowl-image-wrap">
+                <img src="./benef-natu-1.png" alt="Tigela com frango, br&oacute;colis e abobrinha" loading="lazy">
+              </div>
+              <h3>Aprimore e evolua suas t&eacute;cnicas e conhecimentos</h3>
+              <p>Para voc&ecirc; que j&aacute; atua na &aacute;rea ou j&aacute; arrisca fazendo comida para pet e deseja evoluir suas t&eacute;cnicas.</p>
+            </div>
+          </div>
+
+          <div class="bowls-carousel-slide">
+            <div class="bowl-card">
+              <div class="bowl-image-wrap">
+                <img src="./benef-natu-3.png" alt="Tigela com carne, cenoura e abobrinha" loading="lazy">
+              </div>
+              <h3>Conquiste muito mais clientes e bons resultados</h3>
+              <p>Essa &eacute; sua chance de pegar um atalho e entrar em uma das profiss&otilde;es que mais crescem.</p>
+            </div>
+          </div>
+
+          <div class="bowls-carousel-slide">
+            <div class="bowl-card">
+              <div class="bowl-image-wrap">
+                <img src="./benef-natu-2.png" alt="Tigela com carne, ovo e cenoura" loading="lazy">
+              </div>
+              <h3>Aprenda tudo mesmo se for totalmente iniciante</h3>
+              <p>M&eacute;todo passo a passo, totalmente did&aacute;tico, n&atilde;o importa se voc&ecirc; n&atilde;o possui conhecimento na &aacute;rea.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bowls-carousel-dots" id="bowlsCarouselDots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- 5. DESTAQUE CELULAR -->
   <section class="mobile-highlight-section">
@@ -1696,5 +1993,78 @@
       }
     })();
   </script>
+<script>
+
+  // ==========================================
+  // CARROSSEL MOBILE DE TIGELAS / BENEFICIOS
+  // ==========================================
+  (function() {
+    var carousel = document.getElementById('bowlsMobileCarousel');
+    var track = document.getElementById('bowlsCarouselTrack');
+    var prevBtn = document.getElementById('bowlsPrevBtn');
+    var nextBtn = document.getElementById('bowlsNextBtn');
+    var dots = document.querySelectorAll('#bowlsCarouselDots .dot');
+    if (!carousel || !track || !dots.length) return;
+
+    var currentIndex = 0;
+    var totalSlides = dots.length;
+    var timer = null;
+    var isPaused = false;
+
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentIndex = index;
+      track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      timer = setInterval(function() {
+        if (!isPaused) goToSlide(currentIndex + 1);
+      }, 3500);
+    }
+
+    function stopAutoSlide() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function() { goToSlide(currentIndex - 1); startAutoSlide(); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { goToSlide(currentIndex + 1); startAutoSlide(); });
+
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goToSlide(parseInt(this.getAttribute('data-index'), 10));
+        startAutoSlide();
+      });
+    });
+
+    carousel.addEventListener('mouseenter', function() { isPaused = true; });
+    carousel.addEventListener('mouseleave', function() { isPaused = false; });
+    carousel.addEventListener('touchstart', function() { isPaused = true; }, { passive: true });
+
+    var startX = 0;
+    carousel.addEventListener('touchend', function(e) {
+      isPaused = false;
+      if (e.changedTouches && e.changedTouches[0]) {
+        var diffX = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diffX) > 40) {
+          goToSlide(diffX > 0 ? currentIndex + 1 : currentIndex - 1);
+        }
+      }
+      startAutoSlide();
+    }, { passive: true });
+    carousel.addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches[0]) startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    startAutoSlide();
+  })();
+
+</script>
+
 </body>
 </html>
