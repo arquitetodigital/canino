@@ -941,15 +941,6 @@
         value: 27.00,
         currency: 'BRL'
       });
-      fbq('track','InitiateCheckout',{
-        content_name: 'Guia Chef Canino - Alimentação Natural',
-        content_category: 'Alimentação Canina',
-        content_ids: ['chef-canino-27'],
-        content_type: 'product',
-        value: 27.00,
-        currency: 'BRL',
-        num_items: 1
-      });
       if(st!==2){ /* pixel ainda não carregou: espera até 800 ms para não perder o evento */
         e.preventDefault();
         var done=0,go=function(){if(!done){done=1;w.location.href=url.toString()}};
@@ -1271,7 +1262,7 @@
         </div>
 
         <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link" style="width: 100%; max-width: 100%;">
-          SIM! QUERO GARANTIR MINHA VAGA AGORA!
+          SIM! QUERO GARANTIR MEU KIT AGORA!
           <small>Clique para ir ao pagamento seguro</small>
         </a>
 
