@@ -266,12 +266,65 @@
       font-weight: 500;
     }
     .hero-mockup-wrapper {
+      position: relative;
       max-width: 520px;
       margin: 0 auto 28px auto;
       filter: drop-shadow(0 16px 28px rgba(43, 38, 34, 0.18));
     }
     .hero-mockup-wrapper img {
       border-radius: 18px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .mockup-price-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 10px;
+      background: #2F4A3C;
+      color: #FFFFFF;
+      padding: 12px 22px;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .mockup-price-badge .badge-label {
+      font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: #D6E2DC;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .mockup-price-badge .badge-price {
+      font-family: var(--font-title, 'Fraunces', serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-top: 3px;
+      letter-spacing: -0.01em;
+    }
+    @media (max-width: 480px) {
+      .mockup-price-badge {
+        bottom: 8px;
+        left: 6px;
+        padding: 8px 16px;
+        border-radius: 12px;
+      }
+      .mockup-price-badge .badge-label {
+        font-size: 9.5px;
+      }
+      .mockup-price-badge .badge-price {
+        font-size: 24px;
+      }
     }
     .hero-pricing-box {
       margin-bottom: 22px;
@@ -1252,16 +1305,20 @@
       </div>
       <h1 class="hero-title-print">
         Receitas que fazem <br>
-        o rabinho abanar
+         <span class="highlight">o rabinho abanar.</span>
       </h1>
    
       <div class="hero-mockup-wrapper">
         <img src="./mockup.webp" alt="Chef Canino Kit Completo de Alimentação Natural" loading="eager" fetchpriority="high" width="1040" height="1040">
+        <div class="mockup-price-badge">
+          <span class="badge-label">KIT COMPLETO</span>
+          <span class="badge-price">R$ 27,90</span>
+        </div>
       </div>
 
       <p class="lede">
-        <strong>Alimentação natural, prática e gostosa para variar a rotina do seu melhor amigo.</strong><br>
-        Tenha em mãos receitas caseiras, simples e econômicas para preparar algo diferente para o seu cachorro — sem precisar passar horas procurando o que pode ou não pode dar para ele.
+        <strong>Você quer seu melhor amigo ao seu lado por muitos anos. Comece cuidando das pequenas coisas — inclusive da alimentação.</strong><br>
+        Mais de 50 receitas caseiras, nutritivas e baratas para transformar a alimentação do seu cachorro — com o passo a passo que qualquer tutor consegue seguir.
       </p>
 
       <div class="hero-pricing-box">
@@ -1272,7 +1329,7 @@
       </div>
 
       <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link">
-        QUERO RECEBER O EBOOK AGORA!
+        QUERO O KIT COMPLETO POR R$27,90
         <small>Acesso imediato e vitalício ao material digital</small>
       </a>
 
@@ -1289,7 +1346,11 @@
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">POR DENTRO DO MATERIAL</div></div>
       <h2 class="section-title">VEJA UMA PRÉVIA DO <span class="highlight">CHEF CANINO</span></h2>
-      <p class="section-subtitle">Você não precisa ser especialista em alimentação de cães. O Chef Canino foi organizado para você abrir, escolher uma receita e seguir o passo a passo. Receitas completas, ingredientes simples e preparo explicado de forma fácil.</p>
+      <p class="section-subtitle">Você ama seu cachorro e quer cuidar melhor dele, mas nem sempre sabe o que oferecer.<br>
+
+O Chef Canino torna isso simples: receitas caseiras, ingredientes acessíveis e passo a passo fácil para variar a alimentação do seu melhor amigo.<br>
+
+Mais opções para o potinho. Mais momentos de carinho..</p>
 
       <!-- Carrossel Automático Contínuo de Páginas do Ebook -->
       <div class="preview-carousel-wrapper" id="previewCarouselContainer">
@@ -1392,7 +1453,7 @@
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">QUEM JÁ TESTOU</div></div>
       <h2 class="section-title">TUTORES QUE JÁ <span class="highlight">MUDARAM A ROTINA DO PET</span></h2>
-      <p class="section-subtitle">Porque, no fim das contas, não é só sobre preparar uma receita. É sobre aquele momento em que você coloca o prato no chão… Seu cachorro chega curioso, cheira, olha para você e começa a abanar o rabo. É esse tipo de momento que queremos ajudar você a criar.</p>
+      <p class="section-subtitle">PQuem já comprou o Chef Canino sente gratidão todos os dias ao ver a diferença no apetite e na disposição do seu cão. <b>Agora é sua vez de transformar a alimentação do seu melhor amigo.<b></p>
 
       <div class="carousel-container">
         <div class="carousel-track" id="testimonialTrack">
@@ -1670,9 +1731,8 @@
       <div class="eyebrow">ÚLTIMA CHAMADA</div>
       <h2 class="section-title">SEU MELHOR AMIGO MERECE <span class="highlight">REFEIÇÕES PREPARADAS COM CARINHO</span></h2>
       <p class="section-subtitle" style="max-width: 720px; line-height: 1.6;">
-        Você não precisa complicar. Não precisa passar horas procurando receitas. Não precisa saber tudo sobre alimentação canina para começar a variar a rotina do seu pet.<br><br>
+        Comece hoje a preparar receitas variadas e aproveite os bônus exclusivos do Kit Alimentação Natural para Pets.<br><br>
         Você só precisa de boas opções, ingredientes simples e um passo a passo para começar.<br><br>
-        Porque, às vezes, cuidar melhor está em uma coisa pequena: preparar algo diferente, colocar no potinho e ver aquele rabinho começar a abanar.
       </p>
 
       <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link">
