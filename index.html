@@ -266,65 +266,12 @@
       font-weight: 500;
     }
     .hero-mockup-wrapper {
-      position: relative;
       max-width: 520px;
       margin: 0 auto 28px auto;
       filter: drop-shadow(0 16px 28px rgba(43, 38, 34, 0.18));
     }
     .hero-mockup-wrapper img {
       border-radius: 18px;
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .mockup-price-badge {
-      position: absolute;
-      bottom: 12px;
-      left: 10px;
-      background: #2F4A3C;
-      color: #FFFFFF;
-      padding: 12px 22px;
-      border-radius: 16px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      z-index: 3;
-      pointer-events: none;
-    }
-    .mockup-price-badge .badge-label {
-      font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      color: #D6E2DC;
-      text-transform: uppercase;
-      line-height: 1.2;
-    }
-    .mockup-price-badge .badge-price {
-      font-family: var(--font-title, 'Fraunces', serif);
-      font-size: 32px;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 1.1;
-      margin-top: 3px;
-      letter-spacing: -0.01em;
-    }
-    @media (max-width: 480px) {
-      .mockup-price-badge {
-        bottom: 8px;
-        left: 6px;
-        padding: 8px 16px;
-        border-radius: 12px;
-      }
-      .mockup-price-badge .badge-label {
-        font-size: 9.5px;
-      }
-      .mockup-price-badge .badge-price {
-        font-size: 24px;
-      }
     }
     .hero-pricing-box {
       margin-bottom: 22px;
@@ -1258,7 +1205,7 @@
       if(fp&&!url.searchParams.get('fblid'))url.searchParams.set('fblid',fp);
       a.setAttribute('href',url.toString());
       var label=a.innerText.trim().slice(0,100);
-      fbq('track','InitiateCheckout',{
+      fbq('track','Lead',{
         content_name: 'Guia Chef Canino - ' + label,
         content_category: 'cta',
         value: 27.00,
@@ -1310,10 +1257,6 @@
    
       <div class="hero-mockup-wrapper">
         <img src="./mockup.webp" alt="Chef Canino Kit Completo de Alimentação Natural" loading="eager" fetchpriority="high" width="1040" height="1040">
-        <div class="mockup-price-badge">
-          <span class="badge-label">KIT COMPLETO</span>
-          <span class="badge-price">R$ 27,90</span>
-        </div>
       </div>
 
       <p class="lede">
@@ -1346,9 +1289,9 @@
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">POR DENTRO DO MATERIAL</div></div>
       <h2 class="section-title">VEJA UMA PRÉVIA DO <span class="highlight">CHEF CANINO</span></h2>
-      <p class="section-subtitle">
+      <p class="section-subtitle">A verdadeira alegria de receber o Chef Canino é ver a diferença no apetite, na disposição e no brilho do seu cão — e saber que você fez isso acontecer."
 
-O Chef Canino oferece mais de 50 receitas caseiras, práticas e nutritivas — com ingredientes acessíveis e passo a passo claro para qualquer tutor seguir.<br>
+</p>
 
       <!-- Carrossel Automático Contínuo de Páginas do Ebook -->
       <div class="preview-carousel-wrapper" id="previewCarouselContainer">
@@ -1451,7 +1394,9 @@ O Chef Canino oferece mais de 50 receitas caseiras, práticas e nutritivas — c
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">QUEM JÁ TESTOU</div></div>
       <h2 class="section-title">TUTORES QUE JÁ <span class="highlight">MUDARAM A ROTINA DO PET</span></h2>
-      <p class="section-subtitle">Quem já comprou o Chef Canino sente gratidão todos os dias ao ver a diferença no apetite e na disposição do seu cão. <b>Agora é sua vez de transformar a alimentação do seu melhor amigo.<b></p>
+      <p class="section-subtitle">A verdadeira alegria de receber o Chef Canino é ver a diferença no apetite, na disposição e no brilho do seu cão — e saber que você fez isso acontecer.
+
+.</p>
 
       <div class="carousel-container">
         <div class="carousel-track" id="testimonialTrack">
@@ -1469,7 +1414,24 @@ O Chef Canino oferece mais de 50 receitas caseiras, práticas e nutritivas — c
           <div class="carousel-item"><img src="./5.webp" alt="Depoimento WhatsApp Camila" loading="lazy"></div>
           <div class="carousel-item"><img src="./6.webp" alt="Depoimento WhatsApp Diego" loading="lazy"></div>
         </div>
-        <p class="carousel-hint">A rolagem pausa ao passar o mouse ou tocar. →</p>
+        <p class="carousel-hint">A rolagem pausa ao passar o mouse ou tocar. →
+</div>
+
+<p style="
+
+  text-align: center;
+
+  max-width: 700px;
+
+  margin: 20px auto;
+
+">
+
+ <div class="wrap">
+    <div class="social-proof-bar" style="margin-top:40px;">
+      <div><strong>+25</strong><span>receitas no kit</span></div>
+      <div><strong>7 dias</strong><span>de garantia</span></div>
+      <div><strong>100%</strong><span>acesso digital imediato</span></div>
       </div>
     </div>
   </section>
@@ -1631,11 +1593,9 @@ O Chef Canino oferece mais de 50 receitas caseiras, práticas e nutritivas — c
         </div>
 
         <div class="guarantee-content">
-          <h3>VOCÊ TEM 7 DIAS DE GARANTIA!</h3>
+          <h3>🛡️ VOCÊ TEM 7 DIAS DE GARANTIA!</h3>
           <p>
-            Se o Chef Canino não for útil para você, a responsabilidade é nossa.
-
-Por isso, você tem 7 dias para testar tudo e decidir com calma. Se sentir que este guia não é para você, é só pedir o reembolso em até 7 dias. Sem perguntas, sem justificativas, sem burocracia.
+            Queremos que você possa conhecer o material com tranquilidade. Por isso, você tem 7 dias para acessar o conteúdo e decidir se ele faz sentido para você. Se não atender às suas expectativas, basta solicitar o reembolso conforme a política da plataforma. Você pode conhecer o Chef Canino sem precisar decidir tudo antes de ver o que recebeu.
           </p>
         </div>
       </div>
@@ -1731,8 +1691,9 @@ Por isso, você tem 7 dias para testar tudo e decidir com calma. Se sentir que e
       <div class="eyebrow">ÚLTIMA CHAMADA</div>
       <h2 class="section-title">SEU MELHOR AMIGO MERECE <span class="highlight">REFEIÇÕES PREPARADAS COM CARINHO</span></h2>
       <p class="section-subtitle" style="max-width: 720px; line-height: 1.6;">
-        Comece hoje a preparar receitas variadas e aproveite os bônus exclusivos do Kit Alimentação Natural para Pets.<br><br>
-        Você só precisa de boas opções, ingredientes simples e um passo a passo para começar. Seu melhor amigo agradece!<br><br>
+        Você não precisa complicar. Não precisa passar horas procurando receitas. Não precisa saber tudo sobre alimentação canina para começar a variar a rotina do seu pet.<br><br>
+        Você só precisa de boas opções, ingredientes simples e um passo a passo para começar.<br><br>
+        Porque, às vezes, cuidar melhor está em uma coisa pequena: preparar algo diferente, colocar no potinho e ver aquele rabinho começar a abanar.
       </p>
 
       <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link">
