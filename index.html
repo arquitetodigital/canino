@@ -1114,6 +1114,55 @@
       opacity: 0.95;
     }
     footer p { margin-bottom: 6px; }
+  
+    /* SELO CHEF CANINO LEVEMENTE INCLINADO E HEADLINE DO PRINT */
+    .hero-badge-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .hero-badge-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 22px;
+      border: 2px solid var(--forest, #2F4A3C);
+      border-radius: 100px;
+      background: var(--paper, #F6F1E4);
+      transform: rotate(-3.5deg);
+      box-shadow: 0 2px 8px rgba(47, 74, 60, 0.08);
+      transition: transform 0.2s ease;
+    }
+    .hero-badge-stamp:hover {
+      transform: rotate(-1deg) scale(1.03);
+    }
+    .hero-badge-stamp .paws-svg {
+      display: inline-block;
+      width: 22px;
+      height: 16px;
+      fill: #8C4A2D;
+      flex-shrink: 0;
+    }
+    .hero-badge-stamp span {
+      font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--forest, #2F4A3C);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .hero h1.hero-title-print {
+      font-family: var(--font-title, 'Fraunces', serif);
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink, #2B2622);
+      margin: 12px auto 24px auto;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+
   </style>
 
   <!-- Meta Pixel & Rastreamento Completo Validado do Chef Canino -->
@@ -1182,10 +1231,28 @@
   <!-- 1. HERO SECTION -->
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">Alimentação Natural, Funcional & Prática</div>
-      <h1>
-        Transforme a alimentação do seu cão
-        <span class="highlight">com receitas caseiras, nutritivas e econômicas.</span>
+      <div class="hero-badge-wrap">
+        <div class="hero-badge-stamp">
+          <svg class="paws-svg" viewBox="0 0 32 22" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(1, 6) scale(0.65)">
+              <ellipse cx="6" cy="13" rx="3.5" ry="4"/>
+              <circle cx="2" cy="6" r="1.6"/>
+              <circle cx="6" cy="4" r="1.6"/>
+              <circle cx="10" cy="6" r="1.6"/>
+            </g>
+            <g transform="translate(15, 2) scale(0.65)">
+              <ellipse cx="6" cy="13" rx="3.5" ry="4"/>
+              <circle cx="2" cy="6" r="1.6"/>
+              <circle cx="6" cy="4" r="1.6"/>
+              <circle cx="10" cy="6" r="1.6"/>
+            </g>
+          </svg>
+          <span>CHEF CANINO</span>
+        </div>
+      </div>
+      <h1 class="hero-title-print">
+        Receitas que fazem <br>
+        o rabinho abanar
       </h1>
    
       <div class="hero-mockup-wrapper">
@@ -1193,7 +1260,8 @@
       </div>
 
       <p class="lede">
-        Mais de 50 receitas práticas e funcionais elaboradas para a rotina real do seu pet, com ingredientes simples e acessíveis que você já tem em casa.
+        <strong>Alimentação natural, prática e gostosa para variar a rotina do seu melhor amigo.</strong><br>
+        Tenha em mãos receitas caseiras, simples e econômicas para preparar algo diferente para o seu cachorro — sem precisar passar horas procurando o que pode ou não pode dar para ele.
       </p>
 
       <div class="hero-pricing-box">
@@ -1219,9 +1287,9 @@
   <!-- 2. VEJA UMA PRÉVIA DO CHEF CANINO (CARROSSEL AUTOMÁTICO DE PÁGINAS + CARDS DE BENEFÍCIOS) -->
   <section class="preview-section" id="previa-chef-canino">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">Por Dentro do Material</div></div>
+      <div style="text-align: center;"><div class="eyebrow">POR DENTRO DO MATERIAL</div></div>
       <h2 class="section-title">VEJA UMA PRÉVIA DO <span class="highlight">CHEF CANINO</span></h2>
-      <p class="section-subtitle">Dê uma olhada em como o conteúdo foi organizado: receitas completas, modo de preparo passo a passo e ingredientes simples.</p>
+      <p class="section-subtitle">Você não precisa ser especialista em alimentação de cães. O Chef Canino foi organizado para você abrir, escolher uma receita e seguir o passo a passo. Receitas completas, ingredientes simples e preparo explicado de forma fácil.</p>
 
       <!-- Carrossel Automático Contínuo de Páginas do Ebook -->
       <div class="preview-carousel-wrapper" id="previewCarouselContainer">
@@ -1247,8 +1315,8 @@
         <div class="preview-benefit-pill">
           <span class="check-icon">✓</span>
           <div class="pill-text">
-            <strong>+50 Receitas Completas e Testadas</strong>
-            <span>Modo de preparo detalhado, passo a passo, do básico ao avançado</span>
+            <strong>+50 Receitas Completas</strong>
+            <span>Tenha várias opções para sair da mesmice e variar a alimentação do seu cão.</span>
           </div>
         </div>
 
@@ -1256,7 +1324,7 @@
           <span class="check-icon">✓</span>
           <div class="pill-text">
             <strong>Ingredientes Simples e Acessíveis</strong>
-            <span>Tudo o que você já encontra em qualquer feira ou supermercado</span>
+            <span>Receitas pensadas com ingredientes que você encontra facilmente em mercados e feiras.</span>
           </div>
         </div>
 
@@ -1264,7 +1332,7 @@
           <span class="check-icon">✓</span>
           <div class="pill-text">
             <strong>Prático e Sem Complicação</strong>
-            <span>Economize tempo na cozinha preparando refeições nutritivas com rapidez</span>
+            <span>Passo a passo organizado para você preparar as receitas sem ficar perdido na cozinha.</span>
           </div>
         </div>
 
@@ -1272,7 +1340,7 @@
           <span class="check-icon">✓</span>
           <div class="pill-text">
             <strong>Receitas Especiais de Bolos Pet</strong>
-            <span>Celebre as datas comemorativas do seu cão com receitas 100% seguras</span>
+            <span>Porque seu cachorro também pode ganhar um momento especial em aniversários e comemorações.</span>
           </div>
         </div>
 
@@ -1280,7 +1348,7 @@
           <span class="check-icon">✓</span>
           <div class="pill-text">
             <strong>2 Bônus Exclusivos Inclusos</strong>
-            <span>Guia de Alimentação Saudável e E-book com 10 Receitas de Petiscos</span>
+            <span>Além do Chef Canino, você recebe o Guia de Alimentação Saudável e o e-book com 10 Receitas de Petiscos.</span>
           </div>
         </div>
 
@@ -1288,7 +1356,7 @@
           <span class="check-icon">✓</span>
           <div class="pill-text">
             <strong>Tabela de Porções Diárias</strong>
-            <span>Quantidades exatas de acordo com o porte e o peso do seu cão</span>
+            <span>Um material de apoio para ajudar você a entender as quantidades conforme o porte e o peso do seu cão.</span>
           </div>
         </div>
 
@@ -1296,7 +1364,7 @@
           <span class="check-icon">✓</span>
           <div class="pill-text">
             <strong>Acesso Imediato e Vitalício</strong>
-            <span>Consulte no celular, tablet ou computador sempre que quiser</span>
+            <span>Consulte suas receitas pelo celular, tablet ou computador sempre que quiser.</span>
           </div>
         </div>
 
@@ -1304,7 +1372,7 @@
           <span class="check-icon">✓</span>
           <div class="pill-text">
             <strong>Satisfação Garantida ou Reembolso</strong>
-            <span>7 dias de garantia incondicional para você testar com risco zero</span>
+            <span>Você tem 7 dias para conhecer o material com tranquilidade.</span>
           </div>
         </div>
       </div>
@@ -1322,9 +1390,9 @@
   <!-- 3. PROVAS SOCIAIS (CARROSSEL WHATSAPP) -->
   <section class="testimonials-section">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">Quem Já Testou</div></div>
-      <h2 class="section-title">Tutores que já <span class="highlight">mudaram a rotina do pet</span></h2>
-      <p class="section-subtitle">Veja o relato real de pessoas que já prepararam as receitas e viram a alegria dos seus cães.</p>
+      <div style="text-align: center;"><div class="eyebrow">QUEM JÁ TESTOU</div></div>
+      <h2 class="section-title">TUTORES QUE JÁ <span class="highlight">MUDARAM A ROTINA DO PET</span></h2>
+      <p class="section-subtitle">Porque, no fim das contas, não é só sobre preparar uma receita. É sobre aquele momento em que você coloca o prato no chão… Seu cachorro chega curioso, cheira, olha para você e começa a abanar o rabo. É esse tipo de momento que queremos ajudar você a criar.</p>
 
       <div class="carousel-container">
         <div class="carousel-track" id="testimonialTrack">
@@ -1350,22 +1418,22 @@
   <!-- 4. VITRINE DE RECEITAS -->
   <section class="vitrine-section">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">Alimentação é Cuidado</div></div>
+      <div style="text-align: center;"><div class="eyebrow">ALIMENTAÇÃO É CUIDADO</div></div>
       <h2 class="section-title">Cada refeição, um <span class="highlight">momento especial</span></h2>
-      <p class="section-subtitle">Pratos balanceados com aparência e sabor de comida de verdade.</p>
+      <p class="section-subtitle">Quem ama cachorro sabe: cuidar também está nas pequenas coisas. No petisco que você prepara. Na receita diferente que você faz para ele experimentar. Na vontade de oferecer algo além da mesma rotina todos os dias.</p>
 
       <div class="vitrine-featured">
         <img src="./prato.webp" alt="Prato variado com alimentação natural preparada para cães" loading="lazy" width="1000" height="1000">
         <div class="vitrine-details">
           <h3>Conexão e Carinho em Cada Prato</h3>
           <p>
-            Quando você prepara uma refeição com ingredientes selecionados e carinho, a hora da comida vira um momento de conexão inesquecível entre você e seu pet.
+            Quando você prepara uma refeição com ingredientes selecionados e carinho, a hora da comida pode virar um momento especial de conexão entre você e seu pet.
           </p>
           <ul>
             <li>Receitas simples de seguir e rápidas de preparar</li>
-            <li>Ingredientes que você já encontra no mercado da sua rua</li>
-            <li>Zero conservantes ou aditivos químicos industriais</li>
-            <li>Mais variedade para seu cão nunca mais enjoar da comida</li>
+            <li>Ingredientes que você já encontra no mercado</li>
+            <li>Mais variedade para a rotina alimentar do seu cão</li>
+            <li>Uma forma simples de transformar carinho em um momento gostoso</li>
           </ul>
         </div>
       </div>
@@ -1376,30 +1444,30 @@
   <!-- 6. COMPARATIVO -->
   <section class="comparison-section">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">Comparativo Real</div></div>
+      <div style="text-align: center;"><div class="eyebrow">COMPARATIVO REAL</div></div>
       <h2 class="section-title">A escolha é sua:</h2>
-      <p class="section-subtitle">Veja a transformação imediata na rotina e no apetite do seu cão ao aplicar o Chef Canino.</p>
+      <p class="section-subtitle">Você pode continuar…</p>
 
       <div class="comparison-grid">
         <div class="comp-col bad">
           <div class="comp-header">✕ Sem o Chef Canino:</div>
           <ul class="comp-list">
-            <li>Receio e insegurança de preparar algo inadequado ou tóxico para o cão.</li>
-            <li>Cachorro enjoado que recusa a mesma ração seca industrializada todo dia.</li>
-            <li>Gastos elevados com rações caras que não empolgam o animal.</li>
-            <li>Dificuldade em dosar porções e falta de clareza nutricional.</li>
-            <li>Perda de tempo procurando receitas aleatórias e confusas na internet.</li>
+            <li>Ficar procurando receitas diferentes na internet toda vez que quiser preparar algo novo.</li>
+            <li>Sentir aquela dúvida de: “Será que isso é adequado para o meu cachorro?”</li>
+            <li>Acabar oferecendo sempre as mesmas opções por falta de ideias.</li>
+            <li>Deixar passar aquela vontade de fazer algo especial para ele porque parece complicado demais.</li>
+            <li>Gastar tempo tentando descobrir ingredientes, preparo e quantidades por conta própria.</li>
           </ul>
         </div>
 
         <div class="comp-col good">
           <div class="comp-header">✓ Com o Chef Canino:</div>
           <ul class="comp-list">
-            <li>Guia seguro com alimentos permitidos e proibidos revisados para o dia a dia.</li>
-            <li>Cão com prato limpo em minutos, abanando o rabo pedindo mais.</li>
-            <li>Economia real com ingredientes acessíveis da feira e do mercado.</li>
-            <li>Tabela prática de porções diárias de acordo com o porte do pet.</li>
-            <li>Mais saúde digestiva, disposição e pelos visivelmente mais macios e brilhantes.</li>
+            <li>Receitas organizadas para consultar quando quiser variar a rotina.</li>
+            <li>Ingredientes simples e acessíveis.</li>
+            <li>Modo de preparo explicado passo a passo.</li>
+            <li>Opções para refeições, petiscos e momentos especiais.</li>
+            <li>Um material para você abrir sempre que pensar: “Hoje eu queria preparar alguma coisa diferente para ele.”</li>
           </ul>
         </div>
       </div>
@@ -1409,16 +1477,16 @@
   <!-- 7. BÔNUS EXCLUSIVOS -->
   <section class="bonus-section">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">Bônus Exclusivos</div></div>
+      <div style="text-align: center;"><div class="eyebrow">BÔNUS EXCLUSIVOS</div></div>
       <h2 class="section-title">2 Bônus incríveis <span class="highlight">liberados hoje</span></h2>
-      <p class="section-subtitle">Garantindo a sua vaga agora, você recebe gratuitamente estes dois materiais completos:</p>
+      <p class="section-subtitle">Além do Chef Canino, você recebe gratuitamente estes dois materiais para ter ainda mais opções para cuidar da rotina do seu pet.</p>
 
       <div class="bonus-grid">
         <div class="bonus-card">
           <span class="bonus-badge">BÔNUS 1</span>
           <img src="./bonus-petiscos.webp" alt="10 Petiscos Naturais do Chef Canino" class="bonus-mockup" loading="lazy" width="152" height="248">
-          <h3 class="bonus-title">10 Petiscos Naturais</h3>
-          <p class="bonus-desc">Receitas fáceis e nutritivas de petiscos caseiros para recompensar e adestrar seu cão sem químicos.</p>
+          <h3 class="bonus-title">10 PETISCOS NATURAIS</h3>
+          <p class="bonus-desc">Receitas fáceis de petiscos caseiros para variar os momentos de recompensa e carinho com seu cão.</p>
           <div class="bonus-pricing">
             Só hoje de <del>R$ 37,00</del> por <strong>R$ 0,00</strong>
           </div>
@@ -1427,8 +1495,8 @@
         <div class="bonus-card">
           <span class="bonus-badge">BÔNUS 2</span>
           <img src="./bonus-guia.webp" alt="Guia Alimentação Saudável para Pets" class="bonus-mockup" loading="lazy" width="280" height="478">
-          <h3 class="bonus-title">Guia Alimentação Saudável</h3>
-          <p class="bonus-desc">Guia rápido de transição alimentar, lista de alimentos proibidos e permitidos, e dicas de conservação.</p>
+          <h3 class="bonus-title">GUIA ALIMENTAÇÃO SAUDÁVEL PARA PETS</h3>
+          <p class="bonus-desc">Um guia de apoio com informações para ajudar você a organizar uma rotina alimentar mais variada para o seu pet.</p>
           <div class="bonus-pricing">
             Só hoje de <del>R$ 49,70</del> por <strong>R$ 0,00</strong>
           </div>
@@ -1449,7 +1517,7 @@
       <div class="pricing-card-wrapper">
         <div class="pricing-tag-top">🔥 Oferta Exclusiva & Limitada</div>
 
-       <h3 style="font-size: 24px; color: var(--forest); margin-top: 10px;">Oferta Completa:<br> Chef Canino +2 bõnus exclusivos.</h3>
+       <h3 style="font-size: 24px; color: var(--forest); margin-top: 10px;">Oferta Completa:<br> Chef Canino + 2 bônus exclusivos.</h3>
         <p style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--mustard-dark); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Acesso Imediato e Vitalício</p>
 
         <!-- Mockup do Kit Completo no Box da Oferta -->
@@ -1463,14 +1531,15 @@
         </div>
 
         <ul class="pricing-items-list">
-          <li><strong>E-book Chef Canino</strong> (+50 receitas completas, nutritivas e funcionais)</li>
-          <li><strong>Receitas Especiais de Bolos</strong> para comemorações pet</li>
+          <li><strong>E-book Chef Canino</strong> (+50 receitas completas)</li>
+          <li><strong>Receitas especiais de bolos</strong> para comemorações pet</li>
           <li><strong>Bônus 1:</strong> E-book 10 Petiscos Naturais</li>
           <li><strong>Bônus 2:</strong> Guia de Alimentação Saudável</li>
-          <li><strong>Tabela de Porções Diárias</strong> de acordo com o porte do cão</li>
-          <li><strong>Lista de Alimentos Permitidos e Proibidos</strong></li>
-          <li><strong>Acesso Vitalício</strong> + Atualizações futuras incluídas</li>
-          <li><strong>7 Dias de Garantia Incondicional</strong></li>
+          <li><strong>Tabela de porções diárias</strong> de acordo com o porte do cão</li>
+          <li><strong>Lista de alimentos permitidos e proibidos</strong></li>
+          <li><strong>Acesso vitalício</strong></li>
+          <li><strong>Atualizações futuras incluídas</strong></li>
+          <li><strong>7 dias de garantia</strong></li>
         </ul>
 
         <div class="price-wrap">
@@ -1503,9 +1572,9 @@
         </div>
 
         <div class="guarantee-content">
-          <h3>Você tem 7 dias de garantia!</h3>
+          <h3>🛡️ VOCÊ TEM 7 DIAS DE GARANTIA!</h3>
           <p>
-            Queremos garantir ao máximo a sua satisfação e o bem-estar do seu cão. Por isso, você tem 7 dias para testar o material. Conheça as receitas com tranquilidade; se não atender às suas expectativas, basta solicitar o reembolso na plataforma que devolveremos 100% do seu investimento.
+            Queremos que você possa conhecer o material com tranquilidade. Por isso, você tem 7 dias para acessar o conteúdo e decidir se ele faz sentido para você. Se não atender às suas expectativas, basta solicitar o reembolso conforme a política da plataforma. Você pode conhecer o Chef Canino sem precisar decidir tudo antes de ver o que recebeu.
           </p>
         </div>
       </div>
@@ -1515,7 +1584,7 @@
   <!-- 10. FAQ ACCORDION -->
   <section class="faq-section">
     <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">Dúvidas Frequentes</div></div>
+      <div style="text-align: center;"><div class="eyebrow">DÚVIDAS FREQUENTES</div></div>
       <h2 class="section-title">Ainda ficou alguma <span class="highlight">dúvida?</span></h2>
       <p class="section-subtitle">Clique na pergunta para ver a resposta detalhada.</p>
 
@@ -1527,7 +1596,7 @@
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Após a confirmação do pagamento, você recebe imediatamente o link de acesso aos materiais digitais no seu e-mail cadastrado e também pode receber no seu WhatsApp. O acesso é instantâneo.
+              Após a confirmação do pagamento, você recebe acesso ao material digital.
             </div>
           </div>
         </div>
@@ -1539,7 +1608,7 @@
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Sim! Todo o conteúdo é 100% digital e responsivo. Funciona perfeitamente em celulares, tablets ou computadores para você consultar direto na cozinha.
+              Sim. O material pode ser consultado pelo celular, tablet ou computador.
             </div>
           </div>
         </div>
@@ -1551,7 +1620,7 @@
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              As receitas foram formuladas para cães saudáveis em geral, de todos os portes. Caso seu pet possua alguma condição específica ou restrição alimentar, recomendamos validar as quantidades com seu médico-veterinário.
+              As necessidades alimentares podem variar de acordo com idade, porte e condições específicas do animal. Para cães com necessidades clínicas ou alimentares especiais, recomendamos consultar um médico-veterinário.
             </div>
           </div>
         </div>
@@ -1563,7 +1632,7 @@
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              São 100% digitais em alta resolução. Você pode ler nos seus dispositivos e, se desejar, também pode imprimir as receitas que mais gostar.
+              Os materiais são digitais.
             </div>
           </div>
         </div>
@@ -1575,7 +1644,7 @@
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              O seu acesso é vitalício! Uma vez adquirido, o material é seu para sempre, incluindo quaisquer futuras atualizações do guia.
+              O acesso é vitalício, conforme as condições da oferta.
             </div>
           </div>
         </div>
@@ -1587,7 +1656,7 @@
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Totalmente seguro. O processamento é realizado pela plataforma Cakto, com criptografia de ponta a ponta e total privacidade dos seus dados.
+              Sim. O pagamento é realizado por meio de checkout seguro.
             </div>
           </div>
         </div>
@@ -1598,10 +1667,12 @@
   <!-- 11. FECHAMENTO -->
   <section class="final-section">
     <div class="wrap">
-      <div class="eyebrow">Última Chamada</div>
-      <h2 class="section-title">Seu melhor amigo merece <span class="highlight">refeições com carinho</span></h2>
-      <p class="section-subtitle">
-        Comece hoje a preparar refeições variadas e saudáveis e aproveite os bônus exclusivos do Kit Alimentação Natural.
+      <div class="eyebrow">ÚLTIMA CHAMADA</div>
+      <h2 class="section-title">SEU MELHOR AMIGO MERECE <span class="highlight">REFEIÇÕES PREPARADAS COM CARINHO</span></h2>
+      <p class="section-subtitle" style="max-width: 720px; line-height: 1.6;">
+        Você não precisa complicar. Não precisa passar horas procurando receitas. Não precisa saber tudo sobre alimentação canina para começar a variar a rotina do seu pet.<br><br>
+        Você só precisa de boas opções, ingredientes simples e um passo a passo para começar.<br><br>
+        Porque, às vezes, cuidar melhor está em uma coisa pequena: preparar algo diferente, colocar no potinho e ver aquele rabinho começar a abanar.
       </p>
 
       <a href="https://pay.cakto.com.br/7rtwbks_1125001" class="btn checkout-link">
