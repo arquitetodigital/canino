@@ -1258,7 +1258,7 @@
       if(fp&&!url.searchParams.get('fblid'))url.searchParams.set('fblid',fp);
       a.setAttribute('href',url.toString());
       var label=a.innerText.trim().slice(0,100);
-      fbq('track','Lead',{
+      fbq('track','InitiateCheckout',{
         content_name: 'Guia Chef Canino - ' + label,
         content_category: 'cta',
         value: 27.00,
