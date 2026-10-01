@@ -1321,56 +1321,102 @@
 
   </style>
 
-  <!-- Meta Pixel & Rastreamento Completo Validado do Chef Canino -->
+  <!-- Meta Pixel + rastreamento Chef Canino (LP -> Kiwify) -->
   <script>
   (function(w,d){
     if(w.fbq)return;
+    var PIXEL_ID='1038495935667524',
+        CHECKOUT_HOST='pay.kiwify.com.br/UGQXiP5',
+        PRICE=27.90, CURRENCY='BRL',
+        CONTENT={content_name:'Chef Canino - Ebook +50 receitas',content_ids:['chef-canino'],content_type:'product',value:PRICE,currency:CURRENCY};
+
+    /* stub oficial do fbq */
     var n=w.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!w._fbq)w._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-    var st=0,el;
+
+    /* carregamento do fbevents.js (com callback p/ saber quando terminou ou foi bloqueado) */
+    var st=0;
     function load(cb){
       if(st===2){cb&&cb();return}
       if(cb)(load.q=load.q||[]).push(cb);
       if(st)return;st=1;
-      el=d.createElement('script');el.async=!0;el.src='https://connect.facebook.net/en_US/fbevents.js';
+      var el=d.createElement('script');el.async=!0;el.src='https://connect.facebook.net/en_US/fbevents.js';
       el.onload=el.onerror=function(){st=2;(load.q||[]).forEach(function(f){f()});load.q=[]};
       d.head.appendChild(el);
     }
-    function getCookie(name){var v=d.cookie.match('(^|;)\s*'+name+'\s*=\s*([^;]+)');return v?v[2]:'';}
-    function setCookie(name,value,days){var x=new Date();x.setTime(x.getTime()+days*864e5);d.cookie=name+'='+encodeURIComponent(value)+';expires='+x.toUTCString()+';path=/;SameSite=Lax';}
-    function genUUID(){return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c=='x'?r:(r&0x3|0x8);return v.toString(16);});}
-    var ts=Math.round(Date.now()/1000),params=new URLSearchParams(w.location.search),fbclid=params.get('fbclid')||'',fbp=getCookie('_fbp'),fbc=getCookie('_fbc');
-    if(!fbp){fbp='fb.1.'+ts+'.'+genUUID().replace(/-/g,'');setCookie('_fbp',fbp,90);}
-    if(fbclid&&!fbc){fbc='fb.1.'+ts+'.'+fbclid;setCookie('_fbc',fbc,90);}
-    fbq('init','1038495935667524',{fbp:fbp,fbc:fbc});
-    fbq('track','PageView');
 
+    function getCookie(name){var m=d.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]*)'));if(!m)return '';try{return decodeURIComponent(m[1])}catch(e){return m[1]}}
+    function setCookie(name,value,days){try{var x=new Date();x.setTime(x.getTime()+days*864e5);d.cookie=name+'='+encodeURIComponent(value)+';expires='+x.toUTCString()+';path=/;SameSite=Lax'}catch(e){}}
+    function uid(){return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10)}
+
+    /* parametros da URL (utm_*, fbclid, etc.) persistidos na sessao */
+    var params={};
+    try{
+      var stored=sessionStorage.getItem('lp_tracking_params');
+      if(stored)params=JSON.parse(stored)||{};
+    }catch(e){}
+    try{
+      new URLSearchParams(w.location.search).forEach(function(v,k){params[k]=v});
+    }catch(e){}
+    try{sessionStorage.setItem('lp_tracking_params',JSON.stringify(params))}catch(e){}
+
+    /* _fbc: so cria se veio fbclid e o cookie ainda nao existe. Formato Meta: fb.1.<timestamp EM MS>.<fbclid>
+       (_fbp NAO e mais fabricado aqui: o proprio pixel cria no formato correto) */
+    if(params.fbclid&&!getCookie('_fbc'))setCookie('_fbc','fb.1.'+Date.now()+'.'+params.fbclid,90);
+
+    function track(name,data,id){fbq('track',name,data||{},{eventID:id||uid()})}
+
+    fbq('init',PIXEL_ID);
+    track('PageView');
     load();
 
+    /* ViewContent: 1x por visita, no primeiro entre 25% de scroll ou 5s na pagina (filtra bounce/bot) */
+    var vcDone=0;
+    function viewContent(){
+      if(vcDone)return;vcDone=1;
+      w.removeEventListener('scroll',onScroll);
+      track('ViewContent',CONTENT);
+    }
+    function onScroll(){
+      var h=d.documentElement.scrollHeight-w.innerHeight;
+      if(h>0&&(w.pageYOffset||d.documentElement.scrollTop)/h>=0.25)viewContent();
+    }
+    w.addEventListener('scroll',onScroll,{passive:true});
+    setTimeout(viewContent,5000);
+
+    /* monta a URL do checkout com todos os parametros de rastreio */
+    function buildUrl(href){
+      var url=new URL(href,w.location.href);
+      Object.keys(params).forEach(function(k){if(!url.searchParams.has(k))url.searchParams.set(k,params[k])});
+      var fbp=getCookie('_fbp'),fbc=getCookie('_fbc');
+      if(fbp)url.searchParams.set('fbp',fbp);
+      if(fbc)url.searchParams.set('fbc',fbc);
+      return url.toString();
+    }
+    function decorate(){
+      var links=d.querySelectorAll('a[href*="'+CHECKOUT_HOST+'"]');
+      for(var i=0;i<links.length;i++){try{links[i].setAttribute('href',buildUrl(links[i].getAttribute('href')))}catch(e){}}
+    }
+    if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',decorate);else decorate();
+
+    /* clique no CTA: dispara AddToCart (etapa LP) e segue para o checkout.
+       O InitiateCheckout continua sendo disparado pela Kiwify ao abrir o checkout. */
     d.addEventListener('click',function(e){
-      var a=e.target.closest('a[href*="pay.kiwify.com.br/UGQXiP5"]');
+      var a=e.target.closest&&e.target.closest('a[href*="'+CHECKOUT_HOST+'"]');
       if(!a)return;
-      var url=new URL(a.getAttribute('href')||'',w.location.href);
-      var currentParams=new URLSearchParams(w.location.search);
-      currentParams.forEach(function(val, key){
-        if(!url.searchParams.has(key)) url.searchParams.set(key, val);
-      });
-      var pf=currentParams.get('fbclid')||getCookie('_fbc').split('.').pop()||'';
-      var fp=getCookie('_fbp')||'';
-      if(pf&&!url.searchParams.get('fbclid'))url.searchParams.set('fbclid',pf);
-      if(fp&&!url.searchParams.get('fblid'))url.searchParams.set('fbp',fp);
-      a.setAttribute('href',url.toString());
-      if(st!==2){
-        e.preventDefault();
-        var done=0,go=function(){if(!done){done=1;w.location.href=url.toString()}};
-        load(function(){setTimeout(go,150)});
-        setTimeout(go,800);
-      }
+      var href;try{href=buildUrl(a.getAttribute('href'));a.setAttribute('href',href)}catch(err){return}
+      track('AddToCart',CONTENT);
+      if(e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button>0||a.target==='_blank')return;
+      e.preventDefault();
+      var done=0,go=function(){if(!done){done=1;w.location.href=href}};
+      load(function(){setTimeout(go,150)});
+      setTimeout(go,900);
     });
   })(window,document);
   </script>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1038495935667524&ev=PageView&noscript=1"></noscript>
 
   <!-- BARRA DE ESCASSEZ TOPO -->
   <div class="top-bar">
@@ -1934,77 +1980,16 @@ Por isso, você tem 7 dias para testar tudo e decidir com calma. Se sentir que e
   <!-- SCRIPT DE TRAQUEAMENTO COMPLETO & INTERATIVIDADE -->
   <script>
     (function() {
-      function getQueryParams() {
-        var params = {};
-        var search = window.location.search.substring(1);
-        if (search) {
-          var pairs = search.split('&');
-          for (var i = 0; i < pairs.length; i++) {
-            var pair = pairs[i].split('=');
-            if (pair.length === 2) {
-              params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-            }
-          }
-        }
-        return params;
-      }
-
-      function getCookie(name) {
-        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-        if (match) return match[2];
-        return null;
-      }
-
-      var currentParams = getQueryParams();
-
-      if (currentParams.fbclid && !currentParams.fbc) {
-        currentParams.fbc = 'fb.1.' + (+new Date()) + '.' + currentParams.fbclid;
-      }
-      var cookieFbp = getCookie('_fbp');
-      if (cookieFbp && !currentParams.fbp) {
-        currentParams.fbp = cookieFbp;
-      }
-      var cookieFbc = getCookie('_fbc');
-      if (cookieFbc && !currentParams.fbc) {
-        currentParams.fbc = cookieFbc;
-      }
-
-      try {
-        if (Object.keys(currentParams).length > 0) {
-          sessionStorage.setItem('lp_tracking_params', JSON.stringify(currentParams));
-        } else {
-          var stored = sessionStorage.getItem('lp_tracking_params');
-          if (stored) {
-            currentParams = JSON.parse(stored);
-          }
-        }
-      } catch (e) {}
-
-      function attachTrackingToLinks() {
-        var links = document.querySelectorAll('a.checkout-link');
-        links.forEach(function(link) {
-          try {
-            var url = new URL(link.href, window.location.origin);
-            for (var key in currentParams) {
-              if (currentParams.hasOwnProperty(key)) {
-                url.searchParams.set(key, currentParams[key]);
-              }
-            }
-            link.href = url.toString();
-          } catch(e) {}
-        });
-      }
-
-      attachTrackingToLinks();
-
       // Cronômetro sincronizado
       var timerDuration = 15 * 60;
       var timerKey = 'chef_canino_timer_end';
-      var endTime = localStorage.getItem(timerKey);
+      function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+      function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+      var endTime = Number(lsGet(timerKey));
 
       if (!endTime || isNaN(endTime) || (+new Date() > endTime)) {
         endTime = +new Date() + (timerDuration * 1000);
-        localStorage.setItem(timerKey, endTime);
+        lsSet(timerKey, endTime);
       }
 
       function updateTimer() {
@@ -2020,7 +2005,7 @@ Por isso, você tem 7 dias para testar tudo e decidir com calma. Se sentir que e
 
         if (remaining <= 0) {
           endTime = +new Date() + (timerDuration * 1000);
-          localStorage.setItem(timerKey, endTime);
+          lsSet(timerKey, endTime);
         }
       }
 
