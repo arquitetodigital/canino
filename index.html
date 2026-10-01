@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chef Canino — +50 Receitas Caseiras, Nutritivas e Econômicas</title>
   <meta name="description" content="Guia completo de alimentação natural para cães. +50 receitas práticas, econômicas e saudáveis.">
-  
+
   <!-- Fontes Validadas do Chef Canino: Fraunces (Títulos), Work Sans (Corpo), IBM Plex Mono (Eyebrows) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1321,97 +1321,41 @@
 
   </style>
 
-  <!-- Meta Pixel + rastreamento Chef Canino (LP -> Kiwify) -->
+  <!-- Meta Pixel (codigo oficial) -->
   <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1038495935667524');
+  fbq('track','PageView');
+  </script>
+  <script>
+  /* Repasse de UTMs/fbclid para o checkout Kiwify + AddToCart no clique (sem atrasar o redirecionamento) */
   (function(w,d){
-    if(w.fbq)return;
-    var PIXEL_ID='1038495935667524',
-        CHECKOUT_HOST='pay.kiwify.com.br/UGQXiP5',
-        PRICE=27.90, CURRENCY='BRL',
-        CONTENT={content_name:'Chef Canino - Ebook +50 receitas',content_ids:['chef-canino'],content_type:'product',value:PRICE,currency:CURRENCY};
-
-    /* stub oficial do fbq */
-    var n=w.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!w._fbq)w._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-
-    /* carregamento do fbevents.js (com callback p/ saber quando terminou ou foi bloqueado) */
-    var st=0;
-    function load(cb){
-      if(st===2){cb&&cb();return}
-      if(cb)(load.q=load.q||[]).push(cb);
-      if(st)return;st=1;
-      var el=d.createElement('script');el.async=!0;el.src='https://connect.facebook.net/en_US/fbevents.js';
-      el.onload=el.onerror=function(){st=2;(load.q||[]).forEach(function(f){f()});load.q=[]};
-      d.head.appendChild(el);
-    }
-
-    function getCookie(name){var m=d.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]*)'));if(!m)return '';try{return decodeURIComponent(m[1])}catch(e){return m[1]}}
-    function setCookie(name,value,days){try{var x=new Date();x.setTime(x.getTime()+days*864e5);d.cookie=name+'='+encodeURIComponent(value)+';expires='+x.toUTCString()+';path=/;SameSite=Lax'}catch(e){}}
-    function uid(){return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10)}
-
-    /* parametros da URL (utm_*, fbclid, etc.) persistidos na sessao */
+    var HOST='pay.kiwify.com.br/UGQXiP5';
+    var CONTENT={content_name:'Chef Canino - Ebook +50 receitas',content_ids:['chef-canino'],content_type:'product',value:27.90,currency:'BRL'};
     var params={};
-    try{
-      var stored=sessionStorage.getItem('lp_tracking_params');
-      if(stored)params=JSON.parse(stored)||{};
-    }catch(e){}
-    try{
-      new URLSearchParams(w.location.search).forEach(function(v,k){params[k]=v});
-    }catch(e){}
+    try{params=JSON.parse(sessionStorage.getItem('lp_tracking_params')||'{}')||{}}catch(e){}
+    try{new URLSearchParams(w.location.search).forEach(function(v,k){params[k]=v})}catch(e){}
     try{sessionStorage.setItem('lp_tracking_params',JSON.stringify(params))}catch(e){}
-
-    /* _fbc: so cria se veio fbclid e o cookie ainda nao existe. Formato Meta: fb.1.<timestamp EM MS>.<fbclid>
-       (_fbp NAO e mais fabricado aqui: o proprio pixel cria no formato correto) */
-    if(params.fbclid&&!getCookie('_fbc'))setCookie('_fbc','fb.1.'+Date.now()+'.'+params.fbclid,90);
-
-    function track(name,data,id){fbq('track',name,data||{},{eventID:id||uid()})}
-
-    fbq('init',PIXEL_ID);
-    track('PageView');
-    load();
-
-    /* ViewContent: 1x por visita, no primeiro entre 25% de scroll ou 5s na pagina (filtra bounce/bot) */
-    var vcDone=0;
-    function viewContent(){
-      if(vcDone)return;vcDone=1;
-      w.removeEventListener('scroll',onScroll);
-      track('ViewContent',CONTENT);
-    }
-    function onScroll(){
-      var h=d.documentElement.scrollHeight-w.innerHeight;
-      if(h>0&&(w.pageYOffset||d.documentElement.scrollTop)/h>=0.25)viewContent();
-    }
-    w.addEventListener('scroll',onScroll,{passive:true});
-    setTimeout(viewContent,5000);
-
-    /* monta a URL do checkout com todos os parametros de rastreio */
-    function buildUrl(href){
-      var url=new URL(href,w.location.href);
-      Object.keys(params).forEach(function(k){if(!url.searchParams.has(k))url.searchParams.set(k,params[k])});
-      var fbp=getCookie('_fbp'),fbc=getCookie('_fbc');
-      if(fbp)url.searchParams.set('fbp',fbp);
-      if(fbc)url.searchParams.set('fbc',fbc);
-      return url.toString();
-    }
     function decorate(){
-      var links=d.querySelectorAll('a[href*="'+CHECKOUT_HOST+'"]');
-      for(var i=0;i<links.length;i++){try{links[i].setAttribute('href',buildUrl(links[i].getAttribute('href')))}catch(e){}}
+      var links=d.querySelectorAll('a[href*="'+HOST+'"]');
+      for(var i=0;i<links.length;i++){try{
+        var u=new URL(links[i].getAttribute('href'),w.location.href);
+        Object.keys(params).forEach(function(k){if(!u.searchParams.has(k))u.searchParams.set(k,params[k])});
+        links[i].setAttribute('href',u.toString());
+      }catch(e){}}
     }
     if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',decorate);else decorate();
-
-    /* clique no CTA: dispara AddToCart (etapa LP) e segue para o checkout.
-       O InitiateCheckout continua sendo disparado pela Kiwify ao abrir o checkout. */
+    var vc=0;function viewContent(){if(vc)return;vc=1;try{fbq('track','ViewContent',CONTENT)}catch(e){}}
+    w.addEventListener('scroll',function(){var h=d.documentElement.scrollHeight-w.innerHeight;if(h>0&&w.pageYOffset/h>=0.25)viewContent()},{passive:true});
+    setTimeout(viewContent,5000);
     d.addEventListener('click',function(e){
-      var a=e.target.closest&&e.target.closest('a[href*="'+CHECKOUT_HOST+'"]');
-      if(!a)return;
-      var href;try{href=buildUrl(a.getAttribute('href'));a.setAttribute('href',href)}catch(err){return}
-      track('AddToCart',CONTENT);
-      if(e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button>0||a.target==='_blank')return;
-      e.preventDefault();
-      var done=0,go=function(){if(!done){done=1;w.location.href=href}};
-      load(function(){setTimeout(go,150)});
-      setTimeout(go,900);
-    });
+      var a=e.target.closest&&e.target.closest('a[href*="'+HOST+'"]');
+      if(a){try{fbq('track','AddToCart',CONTENT)}catch(err){}}
+    },true);
   })(window,document);
   </script>
 </head>
@@ -2192,8 +2136,9 @@ Por isso, você tem 7 dias para testar tudo e decidir com calma. Se sentir que e
   })();
   </script>
 
-    <!-- POPUP DE SAÍDA (EXIT INTENT) -->
-  <div id="exit-popup-overlay" class="exit-popup-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    
+
+<div id="exit-popup-overlay" class="exit-popup-overlay" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="exit-popup-card">
       <button class="exit-popup-close" id="exit-popup-close-btn" aria-label="Fechar">&times;</button>
 
