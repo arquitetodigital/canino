@@ -1367,8 +1367,11 @@
       var url=new URL(href,w.location.href);
       Object.keys(params).forEach(function(k){if(!url.searchParams.has(k))url.searchParams.set(k,params[k])});
       var fbp=getCookie('_fbp'),fbc=getCookie('_fbc');
-      if(fbp)url.searchParams.set('fbp',fbp);
-      if(fbc)url.searchParams.set('fbc',fbc);
+      if(fbp&&!url.searchParams.has('fbp'))url.searchParams.set('fbp',fbp);
+      if(fbc&&!url.searchParams.has('fbc'))url.searchParams.set('fbc',fbc);
+      // Kiwify suporte a src/sck a partir do utm_source ou utm_campaign
+      if(params.utm_source&&!url.searchParams.has('src'))url.searchParams.set('src',params.utm_source);
+      if(params.utm_campaign&&!url.searchParams.has('sck'))url.searchParams.set('sck',params.utm_campaign);
       return url.toString();
     }
     function decorate(){
@@ -1377,12 +1380,37 @@
     }
     if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',decorate);else decorate();
 
-    /* clique no CTA: apenas atualiza o link (utms/fbp/fbc). Nenhum evento e disparado pela LP: o InitiateCheckout vem so da Kiwify. */
-    d.addEventListener('click',function(e){
-      var a=e.target.closest&&e.target.closest('a[href*="'+CHECKOUT_HOST+'"]');
-      if(!a)return;
-      try{a.setAttribute('href',buildUrl(a.getAttribute('href')))}catch(err){}
-    });
+    /* Atualiza links periodicamente para garantir que _fbp e _fbc gerados assincronamente pelo Facebook estejam nos links */
+    setInterval(decorate, 1500);
+
+    /* Clique em qualquer CTA de checkout (checkout-link / exit-popup-cta): dispara InitiateCheckout 1x por sessao e garante envio dos parametros para a Kiwify */
+    var icKey = 'lp_ic_fired_' + new Date().toISOString().slice(0,13); // dedup por hora (evita estourar 1 evento por clique repetido)
+    var icFired = 0;
+    try { icFired = parseInt(sessionStorage.getItem(icKey) || '0', 10) || 0; } catch(e) {}
+
+    d.addEventListener('click', function(e) {
+      var a = e.target.closest && e.target.closest('a[href*="' + CHECKOUT_HOST + '"]');
+      if (!a) return;
+
+      // Dispara InitiateCheckout com dedup de 1 por sessao por hora
+      if (!icFired) {
+        icFired = 1;
+        try { sessionStorage.setItem(icKey, '1'); } catch(err) {}
+        track('InitiateCheckout', {
+          content_name: CONTENT.content_name,
+          content_ids: CONTENT.content_ids,
+          content_type: 'product',
+          value: PRICE,
+          currency: CURRENCY
+        });
+      }
+
+      // Atualiza o link com UTMs, fbp, fbc e src/sck da Kiwify
+      try {
+        var finalUrl = buildUrl(a.getAttribute('href'));
+        a.setAttribute('href', finalUrl);
+      } catch(err) {}
+    }, true);
   })(window,document);
   </script>
 </head>
