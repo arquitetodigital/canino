@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chef Canino — +50 Receitas Caseiras, Nutritivas e Econômicas</title>
-  <meta name="description" content="Guia completo de alimentação natural para cães. +50 receitas práticas, econômicas e saudáveis.">
+  <title>Chef Canino — Comida Boa Pra Cachorro | +50 Receitas Naturais</title>
+  <meta name="description" content="Chef Canino: Comida Boa Pra Cachorro. Um método de alimentação canina com +50 receitas naturais, guias práticos e orientações seguras para todas as fases da vida.">
   
   <!-- Fontes Validadas do Chef Canino: Fraunces (Títulos), Work Sans (Corpo), IBM Plex Mono (Eyebrows) -->
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+  <link rel="dns-prefetch" href="https://go.perfectpay.com.br">
   <link rel="dns-prefetch" href="https://pay.kiwify.com.br">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1042,6 +1043,104 @@
       .price-wrap .current-val { font-size: 44px; }
     }
 
+
+    /* 8. OFERTA COM DOIS KITS (GRID RESPONSIVO) */
+    .pricing-kits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 980px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+    .pricing-card-kit {
+      background: var(--paper-card);
+      border: 2px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 40px 28px 32px;
+      box-shadow: 0 10px 30px rgba(43, 38, 34, 0.08);
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pricing-card-kit.featured {
+      border: 2.5px solid var(--forest);
+      box-shadow: 0 20px 48px rgba(47, 74, 60, 0.18);
+      background: #FFFFFF;
+    }
+    @media (max-width: 820px) {
+      .pricing-kits-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        max-width: 520px;
+      }
+      .pricing-card-kit {
+        padding: 34px 20px 26px;
+      }
+    }
+
+    /* MODAL DE UPGRADE R$ 22,90 */
+    .upgrade-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 49, 39, 0.82);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .upgrade-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .upgrade-modal-card {
+      background: var(--paper);
+      border: 2px solid var(--forest);
+      border-radius: var(--radius-lg);
+      max-width: 540px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px 26px 26px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+      text-align: center;
+      transform: translateY(16px);
+      transition: transform 0.25s ease;
+    }
+    .upgrade-modal-overlay.active .upgrade-modal-card {
+      transform: translateY(0);
+    }
+    .upgrade-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #FFF;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .upgrade-modal-close:hover {
+      background: var(--paper-dim);
+      transform: scale(1.05);
+    }
+
     /* 9. GARANTIA */
     .guarantee-section {
       background: var(--paper-dim);
@@ -1297,6 +1396,114 @@
       }
     }
 
+  
+    /* TABELA COMPARATIVA COMPACTA DOS KITS */
+    .kits-comp-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(47, 74, 60, 0.06);
+      font-family: var(--font-body);
+    }
+    .kits-comp-table th, 
+    .kits-comp-table td {
+      padding: 10px 14px;
+      font-size: 13.5px;
+      line-height: 1.35;
+      border-bottom: 1px solid var(--line);
+    }
+    .kits-comp-table th {
+      background: var(--paper-dim);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--forest);
+    }
+    .kits-comp-table th.col-feature {
+      text-align: left;
+      width: 52%;
+    }
+    .kits-comp-table th.col-essential {
+      text-align: center;
+      width: 24%;
+      background: #F4EFE6;
+      color: var(--ink-muted);
+    }
+    .kits-comp-table th.col-complete {
+      text-align: center;
+      width: 24%;
+      background: var(--forest);
+      color: #FFFFFF;
+    }
+    .kits-comp-table td.col-feature {
+      text-align: left;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .kits-comp-table td.col-essential {
+      text-align: center;
+      background: rgba(246, 241, 228, 0.35);
+      color: var(--ink-muted);
+    }
+    .kits-comp-table td.col-complete {
+      text-align: center;
+      background: rgba(47, 74, 60, 0.04);
+      color: var(--forest);
+      font-weight: 600;
+    }
+    .kits-comp-table tr:last-child td {
+      border-bottom: none;
+    }
+    .kits-comp-table tr.row-invest td {
+      background: #FAF8F3;
+      padding: 13px 14px;
+    }
+    .kits-comp-table tr.row-invest td.col-complete {
+      background: rgba(47, 74, 60, 0.09);
+    }
+    .kits-comp-check {
+      color: #2F7A4C;
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .kits-comp-dash {
+      color: #A39B92;
+      font-weight: 400;
+    }
+    .kits-comp-val {
+      font-weight: 700;
+      font-size: 13.5px;
+    }
+    @media (max-width: 600px) {
+      .kits-comp-table th, 
+      .kits-comp-table td {
+        padding: 8px 6px;
+        font-size: 11px;
+      }
+      .kits-comp-table th.col-feature {
+        width: 48%;
+      }
+      .kits-comp-table th.col-essential,
+      .kits-comp-table th.col-complete {
+        width: 26%;
+      }
+      .kits-comp-table td.col-feature {
+        font-size: 11px;
+      }
+      .kits-comp-check {
+        font-size: 13px;
+      }
+      .kits-comp-val {
+        font-size: 11.5px;
+      }
+    }
+
   </style>
 
   <!-- Meta Pixel + rastreamento Chef Canino (LP -> Kiwify) -->
@@ -1304,7 +1511,7 @@
   (function(w,d){
     if(w.fbq)return;
     var PIXEL_ID='1038495935667524',
-        CHECKOUT_HOST='pay.kiwify.com.br/UGQXiP5',
+        CHECKOUT_HOST='go.perfectpay.com.br',
         PRICE=27.90, CURRENCY='BRL',
         CONTENT={content_name:'Chef Canino - Ebook +50 receitas',content_ids:['chef-canino'],content_type:'product',value:PRICE,currency:CURRENCY};
 
@@ -1363,6 +1570,7 @@
     setTimeout(viewContent,5000);
 
     /* monta a URL do checkout com todos os parametros de rastreio */
+    w.chefCaninoBuildUrl = buildUrl; w.chefCaninoTrack = track;
     function buildUrl(href){
       var url=new URL(href,w.location.href);
       Object.keys(params).forEach(function(k){if(!url.searchParams.has(k))url.searchParams.set(k,params[k])});
@@ -1375,7 +1583,7 @@
       return url.toString();
     }
     function decorate(){
-      var links=d.querySelectorAll('a[href*="'+CHECKOUT_HOST+'"]');
+      var links=d.querySelectorAll('a[href*="perfectpay.com.br"], a[href*="pay.kiwify.com.br"]');
       for(var i=0;i<links.length;i++){try{links[i].setAttribute('href',buildUrl(links[i].getAttribute('href')))}catch(e){}}
     }
     if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',decorate);else decorate();
@@ -1383,27 +1591,11 @@
     /* Atualiza links periodicamente para garantir que _fbp e _fbc gerados assincronamente pelo Facebook estejam nos links */
     setInterval(decorate, 1500);
 
-    /* Clique em qualquer CTA de checkout (checkout-link / exit-popup-cta): dispara InitiateCheckout 1x por sessao e garante envio dos parametros para a Kiwify */
-    var icKey = 'lp_ic_fired_' + new Date().toISOString().slice(0,13); // dedup por hora (evita estourar 1 evento por clique repetido)
-    var icFired = 0;
-    try { icFired = parseInt(sessionStorage.getItem(icKey) || '0', 10) || 0; } catch(e) {}
-
+    /* Clique em qualquer CTA de checkout: apenas decora a URL com UTMs, _fbp, _fbc e src/sck para a Kiwify.
+       O InitiateCheckout e disparado nativamente pela Kiwify na abertura do checkout (evita duplicacao de IC). */
     d.addEventListener('click', function(e) {
-      var a = e.target.closest && e.target.closest('a[href*="' + CHECKOUT_HOST + '"]');
+      var a = e.target.closest && (e.target.closest('a[href*="perfectpay.com.br"]') || e.target.closest('a[href*="pay.kiwify.com.br"]'));
       if (!a) return;
-
-      // Dispara InitiateCheckout com dedup de 1 por sessao por hora
-      if (!icFired) {
-        icFired = 1;
-        try { sessionStorage.setItem(icKey, '1'); } catch(err) {}
-        track('InitiateCheckout', {
-          content_name: CONTENT.content_name,
-          content_ids: CONTENT.content_ids,
-          content_type: 'product',
-          value: PRICE,
-          currency: CURRENCY
-        });
-      }
 
       // Atualiza o link com UTMs, fbp, fbc e src/sck da Kiwify
       try {
@@ -1417,9 +1609,9 @@
 <body>
   <noscript><img loading="lazy" decoding="async" height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1038495935667524&ev=PageView&noscript=1"></noscript>
 
-  <!-- BARRA DE ESCASSEZ TOPO -->
+  <!-- BARRA DE OFERTA TOPO -->
   <div class="top-bar">
-    ⚡ PREÇO PROMOCIONAL ENCERRA EM <span class="timer-badge countdown-timer">15:00</span> — R$ 27,90 HOJE
+    ⚡ OFERTA ESPECIAL CHEF CANINO — KITS A PARTIR DE R$ 9,90 • ACESSO IMEDIATO
   </div>
 
   <!-- 1. HERO SECTION -->
@@ -1441,31 +1633,37 @@
               <circle cx="10" cy="6" r="1.6"/>
             </g>
           </svg>
-          <span>CHEF CANINO</span>
+          <span>CHEF CANINO — COMIDA BOA PRA CACHORRO</span>
         </div>
       </div>
-      <h1 class="hero-title-print">Se ele é parte da família,<br><span class="highlight">ele merece comida de verdade.</span></h1>
+      <h1 class="hero-title-print">Seu cachorro vive se coçando,<br>tem problemas intestinais<br><span class="highlight">ou já está sentindo o peso da idade?</span></h1>
    
       <div class="hero-mockup-wrapper">
         <img src="./mockup3.webp" alt="Chef Canino Kit Completo de Alimentação Natural" loading="eager" fetchpriority="high" decoding="async" width="580" height="410">
         <div class="mockup-price-badge">
-          <span class="badge-label">KIT COMPLETO</span>
-          <span class="badge-price">R$ 27,90</span>
+          <span class="badge-label">KITS A PARTIR DE</span>
+          <span class="badge-price">R$ 9,90</span>
         </div>
       </div>
 
-      <p class="lede"><strong>+50 receitas caseiras, tabela de porções e 4 bônus.</strong><br>Passo a passo ilustrado. Acesso imediato no e-mail.</p>
+      <p class="lede" style="max-width: 640px; margin: 18px auto 14px auto;">
+        <strong>A alimentação pode fazer parte desses cuidados. Mas você sabe se está oferecendo o que ele precisa?</strong><br>
+        <span style="color: var(--forest); font-weight: 700;">Ele faz parte da família. E merece uma alimentação bem pensada.</span><br>
+        <span style="font-size: 15px; color: var(--ink-muted);">Chef Canino: Comida Boa Pra Cachorro. +50 receitas naturais, guias e orientações para cuidar melhor da alimentação do seu cão.</span>
+      </p>
 
-      <div class="hero-pricing-box">
-        <div class="hero-old-price">De R$ 163,50</div>
-        <div class="hero-new-price-callout">Só hoje por apenas:</div>
-        <div class="hero-new-price"><small>R$</small> 27,90</div>
-        <p style="font-size: 13px; font-weight: 600; color: var(--ink-muted);">À vista no Pix ou Cartão de Crédito</p>
+      <div style="background: var(--paper-card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 24px; max-width: 480px; margin: 16px auto 24px auto; text-align: left; box-shadow: 0 4px 16px rgba(43,38,34,0.06);">
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14.5px; font-weight: 600; color: var(--ink);">
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> +50 receitas naturais.</div>
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> Cuidados com pele e digestão.</div>
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> Alimentação em cada fase da vida.</div>
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> Ingredientes seguros e preparo explicado.</div>
+        </div>
       </div>
 
-      <a href="https://pay.kiwify.com.br/UGQXiP5" class="btn checkout-link">
-        QUERO O KIT COMPLETO POR R$27,90
-        <small>Pagamento único • Acesso imediato</small>
+      <a href="#oferta" class="btn">
+        QUERO CONHECER OS KITS
+        <small>Escolha seu kit • Pagamento único • Acesso imediato</small>
       </a>
 
       <div class="security-badges">
@@ -1480,10 +1678,8 @@
   <section class="preview-section" id="previa-chef-canino">
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">POR DENTRO DO MATERIAL</div></div>
-      <h2 class="section-title">O QUE VOCÊ <span class="highlight">RECEBE</span></h2>
-      <p class="section-subtitle">
-
-Veja algumas páginas:<br>
+      <h2 class="section-title">VOCÊ SABE O QUE ESTÁ COLOCANDO <span class="highlight">NO POTINHO DO SEU CACHORRO?</span></h2>
+      <p class="section-subtitle">Aprenda a preparar receitas naturais, entender os ingredientes e organizar melhor a alimentação de quem faz parte da sua família.</p>
 
       <!-- Carrossel Automático Contínuo de Páginas do Ebook -->
       <div class="preview-carousel-wrapper" id="previewCarouselContainer">
@@ -1505,12 +1701,18 @@ Veja algumas páginas:<br>
       </div>
 
       <!-- Grid de Benefícios estilo Modelo (2 Colunas com cantos arredondados) -->
-      <div class="preview-benefits-grid"><div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>+50 receitas passo a passo</strong><span>Quase 2 meses sem repetir prato.</span></div></div><div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>Tabela de porções</strong><span>Quantidade certa por porte e peso.</span></div></div><div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>4 bônus inclusos</strong><span>Cardápio de 30 dias, transição, petiscos e guia.</span></div></div><div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>Acesso imediato e vitalício</strong><span>Celular, tablet ou PC. 7 dias de garantia.</span></div></div></div>
-<!-- Botão CTA Centrado Logo Após os Cards -->
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="https://pay.kiwify.com.br/UGQXiP5" class="btn checkout-link">
-          QUERO COMEÇAR AGORA!
-          <small>Acesso imediato • 7 dias de garantia</small>
+      <div class="preview-benefits-grid">
+        <div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>+50 receitas naturais</strong><span>Receitas organizadas com instruções de preparo.</span></div></div>
+        <div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>Mais segurança com os ingredientes</strong><span>Saiba quais alimentos exigem cuidado e quais são proibidos.</span></div></div>
+        <div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>Alimentação mais organizada</strong><span>Cardápios, orientações e lista de compras para sua rotina.</span></div></div>
+        <div class="preview-benefit-pill"><span class="check-icon">✓</span><div class="pill-text"><strong>Cuidados para cada fase da vida</strong><span>Informações sobre digestão, pele, peso e envelhecimento.</span></div></div>
+      </div>
+
+      <!-- Botão CTA Centrado Logo Após os Cards -->
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="#oferta" class="btn">
+          QUERO CONHECER OS KITS
+          <small>Escolha seu kit • Acesso imediato</small>
         </a>
       </div>
     </div>
@@ -1520,7 +1722,7 @@ Veja algumas páginas:<br>
   <section class="testimonials-section">
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">QUEM JÁ TESTOU</div></div>
-      <h2 class="section-title">TUTORES QUE JÁ <span class="highlight">MUDARAM A ROTINA DO PET</span></h2>
+      <h2 class="section-title">TUTORES QUE DECIDIRAM CUIDAR <span class="highlight">MELHOR DA ALIMENTAÇÃO DOS SEUS CÃES</span></h2>
       <p class="section-subtitle">Relatos de tutores. Resultados variam de cão para cão.</p>
 
       <div class="carousel-container">
@@ -1562,8 +1764,8 @@ Veja algumas páginas:<br>
   <!-- 3.5 PROTOCOLOS FUNCIONAIS -->
   <section class="protocols-section">
     <div class="wrap">
-      <h2 class="section-title">8 GUIAS <span class="highlight">POR OBJETIVO</span></h2>
-      <p class="section-subtitle">Receitas organizadas por objetivo:</p>
+      <h2 class="section-title">DO INTESTINO SENSÍVEL À TERCEIRA IDADE: <span class="highlight">A ALIMENTAÇÃO MERECE ATENÇÃO</span></h2>
+      <p class="section-subtitle">Conheça os guias do Chef Canino para diferentes necessidades e fases da vida.</p>
 
       <div class="protocols-grid">
         <div class="protocol-card">
@@ -1607,7 +1809,7 @@ Veja algumas páginas:<br>
         </div>
       </div>
 
-      <div class="protocols-footer-box">💡 100% naturais, sem sal e sem açúcar.</div>
+      <div class="protocols-footer-box">💡 Conteúdo educativo e prático para enriquecer os cuidados alimentares do seu cão.</div>
     </div>
   </section>
 
@@ -1615,22 +1817,25 @@ Veja algumas páginas:<br>
   <section class="vitrine-section">
     <div class="wrap">
       <div><div class="eyebrow">ANTES DE DECIDIR</div></div>
-      <h2 class="section-title">Você sabe o que <span class="highlight">pode e o que não pode?</span></h2>
-      <p class="section-subtitle">Receita improvisada pode levar ingrediente proibido para cães.</p>
+      <h2 class="section-title">COMIDA FEITA COM AMOR <span class="highlight">TAMBÉM PODE ESTAR ERRADA</span></h2>
+      <p class="section-subtitle">Nem toda receita natural é completa para cães. E alguns ingredientes comuns na nossa cozinha podem fazer mal.</p>
       <div class="vitrine-featured">
         <img src="./prato.webp" alt="Prato variado com alimentação natural preparada para cães" loading="lazy" decoding="async" width="1000" height="1000">
         <div class="vitrine-details">
           <h3>Cozinhar sem guia é arriscado</h3>
-          <p>Cebola, alho, uva, chocolate e xilitol fazem mal aos cães e aparecem em muita receita da internet. No kit você tem a lista completa de proibidos e as porções certas.</p>
+          <p>Você pode preparar uma refeição com todo o carinho e, ainda assim, não saber se ela atende às necessidades nutricionais do seu cachorro. Por isso, antes de mudar a alimentação, é fundamental entender ingredientes, quantidades e preparo seguro.</p>
           <ul>
-            <li>Lista de alimentos permitidos e proibidos</li>
-            <li>Porção certa por porte e peso</li>
-            <li>Receitas simples, passo a passo</li>
+            <li>Conheça ingredientes perigosos.</li>
+            <li>Evite erros comuns no preparo.</li>
+            <li>Entenda a importância de uma alimentação adequada.</li>
           </ul>
         </div>
       </div>
-      <div style="text-align:center;margin-top:24px">
-        <a href="https://pay.kiwify.com.br/UGQXiP5" class="btn checkout-link">QUERO COZINHAR COM SEGURANÇA<small>R$ 27,90 • Acesso imediato</small></a>
+      <div style="text-align:center;margin-top:28px">
+        <a href="#oferta" class="btn">
+          QUERO APRENDER A ALIMENTAR COM MAIS SEGURANÇA
+          <small>Kits a partir de R$ 9,90 • Acesso imediato</small>
+        </a>
       </div>
     </div>
   </section>
@@ -1640,18 +1845,27 @@ Veja algumas páginas:<br>
   <section class="comparison-section">
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">COMPARATIVO REAL</div></div>
-      <h2 class="section-title">A escolha é sua:</h2>
-      
+      <h2 class="section-title">A DIFERENÇA ENTRE IMPROVISAR <span class="highlight">E SABER O QUE ESTÁ FAZENDO</span></h2>
 
       <div class="comparison-grid">
         <div class="comp-col bad">
           <div class="comp-header">✕ Sem o Chef Canino:</div>
-          <ul class="comp-list"><li>Mesmo pacote, mesmo sabor, todo dia.</li><li>Sem saber o que é seguro oferecer.</li><li>Receita improvisada, sem saber se está certa.</li></ul>
+          <ul class="comp-list">
+            <li>Receitas aleatórias da internet.</li>
+            <li>Dúvidas sobre ingredientes permitidos.</li>
+            <li>Falta de organização e rotina alimentar.</li>
+            <li>Insegurança sobre o preparo correto.</li>
+          </ul>
         </div>
 
         <div class="comp-col good">
           <div class="comp-header">✓ Com o Chef Canino:</div>
-          <ul class="comp-list"><li>+50 receitas prontas, passo a passo.</li><li>Lista de alimentos permitidos e proibidos.</li><li>Porção certa por porte e peso.</li></ul>
+          <ul class="comp-list">
+            <li>Receitas organizadas passo a passo.</li>
+            <li>Guias claros de ingredientes seguros.</li>
+            <li>Orientações práticas de preparo.</li>
+            <li>Materiais de planejamento alimentar.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1661,8 +1875,8 @@ Veja algumas páginas:<br>
   <section class="bonus-section">
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">BÔNUS EXCLUSIVOS</div></div>
-      <h2 class="section-title">4 Bônus incluídos <span class="highlight">liberados hoje</span></h2>
-      <p class="section-subtitle">Incluídos no kit, sem custo extra.</p>
+      <h2 class="section-title">4 BÔNUS INCLUÍDOS <span class="highlight">NO KIT COMPLETO</span></h2>
+      <p class="section-subtitle">Incluídos exclusivamente no Kit Completo, liberados sem custo extra.</p>
 
       <div class="bonus-grid">
         <div class="bonus-card">
@@ -1707,50 +1921,217 @@ Veja algumas páginas:<br>
       </div>
 
       <div style="text-align: center;">
-        <a href="https://pay.kiwify.com.br/UGQXiP5" class="btn checkout-link">
-          QUERO MEUS BÔNUS EXCLUSIVOS!
+        <a href="#oferta" class="btn">
+          QUERO MEUS BÔNUS NO KIT COMPLETO
+          <small>Disponível na oferta do Kit Completo</small>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 8. OFERTA & PRICING CARD -->
+  <!-- 8. OFERTA COM DOIS KITS -->
   <section class="pricing-section" id="oferta">
     <div class="wrap">
-      <div class="pricing-card-wrapper">
-        <div class="pricing-tag-top">🔥 Oferta de hoje</div>
+      <!-- CABEÇALHO DO COMPARATIVO & ESCOLHA DOS KITS -->
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 28px auto;">
+        <div class="eyebrow">ESCOLHA O SEU CHEF CANINO</div>
+        <h2 class="section-title" style="margin-top: 8px; line-height: 1.2;">
+          SE ELE FAZ PARTE DA FAMÍLIA,<br>
+          <span class="highlight">QUAL CUIDADO VOCÊ QUER OFERECER?</span>
+        </h2>
+        <p class="section-subtitle" style="margin-top: 10px; font-size: 15px; color: var(--ink-muted); line-height: 1.45;">
+          O Essencial ajuda você a começar. O Completo reúne mais receitas, guias e ferramentas para cuidar melhor da alimentação do seu cachorro.
+        </p>
+      </div>
 
-       <h3 style="font-size: 24px; color: var(--forest); margin-top: 10px;">Oferta Completa:<br> Chef Canino + 4 bônus.</h3>
-        <p style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--mustard-dark); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Acesso Imediato e Vitalício</p>
+      <!-- TABELA COMPARATIVA COMPACTA -->
+      <div class="kits-comparison-table-wrapper" style="max-width: 820px; margin: 0 auto 16px auto;">
+        <table class="kits-comp-table">
+          <thead>
+            <tr>
+              <th class="col-feature">O QUE VOCÊ RECEBE</th>
+              <th class="col-essential">ESSENCIAL</th>
+              <th class="col-complete">COMPLETO ⭐</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-feature">Receitas naturais</td>
+              <td class="col-essential"><span class="kits-comp-val">15</span></td>
+              <td class="col-complete"><span class="kits-comp-val" style="color: var(--forest);">+50</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Alimentos permitidos e proibidos</td>
+              <td class="col-essential"><span class="kits-comp-check">✓</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Orientações de preparo</td>
+              <td class="col-essential"><span class="kits-comp-check">✓</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Guia Pele & Pelagem</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Guia Barriguinha</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Guia Focinho Grisalho</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">8 guias temáticos</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Tabela de referência de porções</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Cardápio de 30 dias</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Lista de compras</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Guia de transição alimentar</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">10 petiscos naturais</td>
+              <td class="col-essential"><span class="kits-comp-dash">—</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="col-feature">Acesso vitalício</td>
+              <td class="col-essential"><span class="kits-comp-check">✓</span></td>
+              <td class="col-complete"><span class="kits-comp-check">✓</span></td>
+            </tr>
+            <tr class="row-invest">
+              <td class="col-feature" style="font-weight: 700; color: var(--forest); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase;">INVESTIMENTO</td>
+              <td class="col-essential" style="font-weight: 800; font-size: 15px; color: var(--ink);">R$ 9,90</td>
+              <td class="col-complete" style="font-weight: 800; font-size: 16px; color: var(--forest);">R$ 27,90</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <!-- Mockup do Kit Completo no Box da Oferta -->
-        <div class="pricing-mockup-wrapper">
-          <img src="./mockup3.webp" alt="Mockup do Kit Completo Chef Canino e Bônus" class="pricing-mockup-img" loading="lazy" decoding="async" width="600" height="600">
+      <!-- COPY DE VALORIZAÇÃO -->
+      <div class="kits-valorizacao-box" style="margin: 0 auto 36px auto; max-width: 820px; text-align: center;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; text-align: left;">
+          <div style="background: var(--paper-dim); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 14px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--ink-muted); text-transform: uppercase;">Essencial</div>
+            <p style="font-size: 13px; color: var(--ink); margin-top: 3px; line-height: 1.35;">Para começar com receitas naturais e orientações básicas.</p>
+          </div>
+          <div style="background: rgba(47, 74, 60, 0.05); border: 1.5px solid rgba(47, 74, 60, 0.2); border-radius: var(--radius-sm); padding: 10px 14px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--forest); text-transform: uppercase;">Completo ⭐</div>
+            <p style="font-size: 13px; color: var(--forest); margin-top: 3px; line-height: 1.35; font-weight: 600;">Para ter mais receitas, planejamento e guias para diferentes necessidades.</p>
+          </div>
         </div>
 
-        <div class="pricing-timer-box">
-          ⏳ PREÇO PROMOCIONAL ENCERRA EM:
-          <span class="time countdown-timer">15:00</span>
+        <div style="background: var(--mustard); color: #1E1A17; font-family: var(--font-mono); font-size: clamp(12px, 3vw, 13.5px); font-weight: 800; padding: 12px 16px; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: 0.03em; box-shadow: 0 4px 14px rgba(212, 160, 23, 0.2);">
+          ⚡ POR R$ 18 A MAIS, VOCÊ LEVA +50 RECEITAS, OS GUIAS E TODOS OS BÔNUS DO CHEF CANINO.
+        </div>
+      </div>
+
+      <div class="pricing-kits-grid">
+        
+        <!-- KIT 1: CHEF CANINO ESSENCIAL (R$ 9,90) -->
+        <div class="pricing-card-kit">
+          <div class="pricing-tag-top" style="background: var(--paper-dim); color: var(--forest); border: 1px solid var(--line);">
+            PARA QUEM QUER COMEÇAR
+          </div>
+
+          <div style="margin-top: 6px;">
+            <h3 style="font-size: 24px; color: var(--forest); font-family: var(--font-title); font-weight: 700;">Chef Canino Essencial</h3>
+            <p style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em;">15 Receitas Selecionadas</p>
+          </div>
+
+          <div class="price-wrap" style="margin: 20px 0 14px 0;">
+            <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--forest); text-transform: uppercase;">Por apenas:</div>
+            <div class="current-val" style="font-size: 48px;"><small>R$</small> 9,90</div>
+            <div class="installments">Pagamento único • Sem mensalidades</div>
+          </div>
+
+          <ul class="pricing-items-list" style="margin: 14px 0 22px 0; padding: 18px; font-size: 14px;">
+            <li><strong>15 receitas naturais</strong> selecionadas passo a passo</li>
+            <li><strong>Guia básico de alimentos</strong> permitidos e proibidos</li>
+            <li><strong>Orientações básicas</strong> de preparo seguro</li>
+            <li><strong>Acesso digital imediato</strong> (celular, tablet ou PC)</li>
+            <li><strong>7 dias de garantia</strong> incondicional</li>
+          </ul>
+
+          <div style="margin-top: auto;">
+            <button type="button" id="btn-kit-essential" class="btn" style="width: 100%; border: none; cursor: pointer; padding: 16px 20px;">
+              QUERO COMEÇAR POR R$ 9,90
+              <small>Pagamento único • Acesso imediato</small>
+            </button>
+          </div>
         </div>
 
-        <ul class="pricing-items-list"><li><strong>Chef Canino:</strong> +50 receitas passo a passo</li><li><strong>4 bônus:</strong> Petiscos, Guia de Alimentação, Cardápio de 30 dias e Transição</li><li><strong>Tabela de porções</strong> por porte e peso</li><li><strong>Lista de alimentos</strong> permitidos e proibidos</li><li><strong>8 guias de cuidados</strong> especiais</li><li><strong>Acesso vitalício</strong> + atualizações</li><li><strong>7 dias de garantia</strong></li></ul>
+        <!-- KIT 2: CHEF CANINO COMPLETO (R$ 27,90) - DESTAQUE -->
+        <div class="pricing-card-kit featured">
+          <div class="pricing-tag-top">
+            ★ MAIS COMPLETO • MAIS ESCOLHIDO
+          </div>
 
-        <div class="price-wrap">
-          <div class="old-val">De R$ 163,50</div>
-          <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--forest); text-transform: uppercase; margin-top: 4px;">Por apenas:</div>
-          <div class="current-val"><small>R$</small> 27,90</div>
-          <div class="installments">Pagamento único • Sem mensalidades • R$ 0,56 por receita</div>
+          <div style="margin-top: 6px;">
+            <h3 style="font-size: 25px; color: var(--forest); font-family: var(--font-title); font-weight: 700;">Chef Canino Completo</h3>
+            <p style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--mustard-dark); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Método Completo + 4 Bônus</p>
+          </div>
+
+          <!-- Mockup do Kit Completo no Box -->
+          <div class="pricing-mockup-wrapper" style="margin: 14px auto 8px auto; max-width: 320px;">
+            <img src="./mockup3.webp" alt="Mockup do Kit Completo Chef Canino e Bônus" class="pricing-mockup-img" loading="lazy" decoding="async" width="580" height="410">
+          </div>
+
+          <div class="price-wrap" style="margin: 10px 0 14px 0;">
+            <div class="old-val">De R$ 163,50</div>
+            <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--forest); text-transform: uppercase; margin-top: 2px;">Por apenas:</div>
+            <div class="current-val" style="font-size: 52px;"><small>R$</small> 27,90</div>
+            <div class="installments">Pagamento único • Sem mensalidades • R$ 0,56 por receita</div>
+          </div>
+
+          <ul class="pricing-items-list" style="margin: 14px 0 22px 0; padding: 18px; font-size: 14px;">
+            <li><strong>+50 receitas naturais</strong> passo a passo ilustrado</li>
+            <li><strong>8 guias temáticos</strong> de cuidados e fases da vida</li>
+            <li><strong>Tabela de porções</strong> por porte e peso</li>
+            <li><strong>Guia de alimentos</strong> permitidos e proibidos</li>
+            <li><strong>Cardápio de 30 dias</strong> + lista de compras</li>
+            <li><strong>Guia de transição</strong> da ração em 7 dias</li>
+            <li><strong>10 receitas</strong> de petiscos naturais caseiros</li>
+            <li><strong>Guia de alimentação</strong> saudável para pets</li>
+            <li><strong>Acesso imediato e vitalício</strong> + atualizações</li>
+            <li><strong>7 dias de garantia</strong> incondicional</li>
+          </ul>
+
+          <div style="margin-top: auto;">
+            <a href="https://go.perfectpay.com.br/PPU38CQH0JL" class="btn checkout-link btn-kit-complete" id="btn-kit-complete" style="width: 100%; max-width: 100%; padding: 18px 20px;">
+              QUERO O COMPLETO POR R$ 27,90
+              <small>Clique para ir ao pagamento seguro</small>
+            </a>
+          </div>
         </div>
 
-        <a href="https://pay.kiwify.com.br/UGQXiP5" class="btn checkout-link" style="width: 100%; max-width: 100%;">
-          SIM! QUERO GARANTIR MEU KIT AGORA!
-          <small>Clique para ir ao pagamento seguro</small>
-        </a>
+      </div>
 
-        <div class="security-badges" style="margin-top: 18px;">
-          <span>🔒 Checkout Criptografado</span>
-          <span>⚡ Liberação Imediata</span>
-        </div>
+      <div class="security-badges" style="margin-top: 28px;">
+        <span>🔒 Checkout Criptografado</span>
+        <span>⚡ Liberação Imediata</span>
+        <span>🛡️ 7 Dias de Garantia</span>
       </div>
     </div>
   </section>
@@ -1765,8 +2146,8 @@ Veja algumas páginas:<br>
         </div>
 
         <div class="guarantee-content">
-          <h3>VOCÊ TEM 7 DIAS DE GARANTIA!</h3>
-          <p>Se o Chef Canino não for útil para você, peça o reembolso em até 7 dias. Sem perguntas, sem burocracia.</p>
+          <h3>VOCÊ TEM 7 DIAS PARA CONHECER O CHEF CANINO COM TRANQUILIDADE.</h3>
+          <p>Acesse o material e conheça as receitas, orientações e guias. Se não atender às suas expectativas, você poderá solicitar reembolso dentro do prazo de 7 dias, conforme as condições da oferta.</p>
         </div>
       </div>
     </div>
@@ -1777,53 +2158,77 @@ Veja algumas páginas:<br>
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">DÚVIDAS FREQUENTES</div></div>
       <h2 class="section-title">Ainda ficou alguma <span class="highlight">dúvida?</span></h2>
-      <p class="section-subtitle">Toque na pergunta para ver a resposta.</p>
+      <p class="section-subtitle">Toque na pergunta para ver a resposta direta.</p>
 
       <div class="faq-wrapper">
         <div class="faq-item">
           <div class="faq-question">
-            <span>Como recebo os ebooks?</span>
+            <span>Qual a diferença entre o Kit Essencial e o Kit Completo?</span>
             <span class="toggle-icon">+</span>
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Após a confirmação do pagamento, você recebe acesso ao material digital.
+              O Kit Essencial (R$ 9,90) oferece 15 receitas selecionadas e orientações básicas para quem quer começar. O Kit Completo (R$ 27,90) reúne mais de 50 receitas, oito guias temáticos por objetivo, planejamento de 30 dias, lista de compras, 10 petiscos e todos os quatro bônus exclusivos.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question">
-            <span>As receitas servem para qualquer raça e idade?</span>
+            <span>Posso substituir totalmente a ração pelas receitas?</span>
             <span class="toggle-icon">+</span>
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              As necessidades alimentares podem variar de acordo com idade, porte e condições específicas do animal. Para cães com necessidades clínicas ou alimentares especiais, recomendamos consultar um médico-veterinário.
+              Somente uma dieta caseira balanceada para as necessidades individuais do seu cão pode substituir a alimentação principal. O Chef Canino oferece receitas e orientações educativas, mas a transição completa definitiva exige orientação de um médico-veterinário ou nutrólogo canino.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question">
-            <span>Por quanto tempo terei acesso?</span>
+            <span>Serve para cães com problemas de saúde ou intestino sensível?</span>
             <span class="toggle-icon">+</span>
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              O acesso é vitalício, conforme as condições da oferta.
+              O material apresenta orientações educativas sobre cuidados com a pele, digestão e fases da vida. No entanto, cães com sintomas recorrentes, alergias severas ou condições clínicas precisam sempre de avaliação veterinária individualizada antes de qualquer mudança.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question">
-            <span>O pagamento é seguro?</span>
+            <span>Como recebo o material após a compra?</span>
             <span class="toggle-icon">+</span>
           </div>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Sim. O pagamento é realizado por meio de checkout seguro.
+              O acesso é 100% digital. Assim que o pagamento for confirmado, você recebe imediatamente os dados de acesso no seu e-mail para baixar e consultar no celular, tablet ou computador quando quiser.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>O pagamento é único ou tem mensalidades?</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              O pagamento é único. Você paga uma única vez (R$ 9,90 no Essencial ou R$ 27,90 no Completo) e tem acesso garantido, sem nenhuma cobrança recorrente ou taxa oculta.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Tenho garantia caso não me adapte?</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sim! Você tem 7 dias de garantia incondicional. Se você acessar o material e achar que ele não agregou valor para os cuidados com o seu cachorro, basta solicitar o reembolso que devolvemos 100% do seu investimento.
             </div>
           </div>
         </div>
@@ -1834,12 +2239,14 @@ Veja algumas páginas:<br>
   <!-- 11. FECHAMENTO -->
   <section class="final-section">
     <div class="wrap">
-      <div class="eyebrow">ÚLTIMA CHAMADA</div>
-      <h2 class="section-title">SEU MELHOR AMIGO MERECE <span class="highlight">REFEIÇÕES PREPARADAS COM CARINHO</span></h2>
-      <p class="section-subtitle" style="max-width: 720px; line-height: 1.6;">Ele já comeu a mesma ração hoje. Surpreenda-o com algo feito por você. Acesso imediato.</p>
+      <div class="eyebrow">DECISÃO PENSADA</div>
+      <h2 class="section-title">ELE FAZ PARTE DA SUA FAMÍLIA. <span class="highlight">E A ALIMENTAÇÃO DELE MERECE ATENÇÃO.</span></h2>
+      <p class="section-subtitle" style="max-width: 720px; line-height: 1.6;">
+        Seu cachorro depende de você para escolher o que vai para o potinho. E quando surgem dúvidas sobre ingredientes, digestão ou necessidades alimentares, ter informação organizada faz diferença. O Chef Canino reúne receitas naturais, guias e orientações para ajudar você a cuidar melhor da alimentação de quem está sempre ao seu lado.
+      </p>
 
-      <a href="https://pay.kiwify.com.br/UGQXiP5" class="btn checkout-link">
-        QUERO O KIT COMPLETO POR R$ 27,90
+      <a href="#oferta" class="btn">
+        QUERO ESCOLHER MEU KIT CHEF CANINO
       </a>
 
       <div style="margin-top: 24px; display: flex; justify-content: center; gap: 20px; font-size: 13px; font-weight: 600; color: var(--ink-muted);">
@@ -2072,7 +2479,202 @@ Veja algumas páginas:<br>
   })();
   </script>
 
-    <!-- POPUP DE SAÍDA (EXIT INTENT) -->
+    
+  <!-- MODAL DE UPGRADE (R$ 22,90) -->
+  <div id="upgrade-modal-overlay" class="upgrade-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="upgrade-modal-title">
+    <div class="upgrade-modal-card">
+      <button class="upgrade-modal-close" id="upgrade-modal-close-btn" aria-label="Fechar">&times;</button>
+
+      <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--mustard-dark); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;">
+        UMA OPORTUNIDADE ANTES DE FINALIZAR
+      </div>
+
+      <h3 id="upgrade-modal-title" style="font-family: var(--font-title); font-size: clamp(20px, 4vw, 25px); color: var(--forest); line-height: 1.25; margin-bottom: 8px;">
+        POR MAIS R$ 13, LEVE O CHEF CANINO COMPLETO!
+      </h3>
+
+      <p style="font-size: 14.5px; color: var(--ink-muted); line-height: 1.45; margin-bottom: 18px;">
+        Aproveite esta condição única: adicione todos os guias, mais de 50 receitas e 4 bônus exclusivos por apenas <strong>R$ 22,90</strong> no total.
+      </p>
+
+      <!-- DESTAQUE EXCLUSIVO DO UPGRADE R$ 22,90 (SEM O BOX DE 9,90) -->
+      <div style="background: #FFFFFF; border: 2.5px solid var(--forest); border-radius: var(--radius-md); padding: 20px 18px; margin-bottom: 20px; text-align: left; box-shadow: 0 8px 25px rgba(47,74,60,0.12);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <span style="background: var(--mustard); color: #1E1A17; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; letter-spacing: 0.06em;">
+            ⭐ OFERTA EXCLUSIVA DESTA ETAPA
+          </span>
+          <span style="font-size: 12px; color: var(--forest); font-weight: 700; background: rgba(47,74,60,0.08); padding: 4px 10px; border-radius: 999px;">
+            ECONOMIA IMEDIATA
+          </span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(47,74,60,0.15);">
+          <div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--forest); text-transform: uppercase; letter-spacing: 0.02em;">Chef Canino Completo</div>
+            <div style="font-size: 12.5px; color: var(--ink-muted); margin-top: 2px;">De <del style="color: #8c8278;">R$ 27,90</del> por apenas:</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 34px; font-weight: 800; color: var(--forest); font-family: var(--font-title); line-height: 1;">R$ 22,90</div>
+            <div style="font-size: 11.5px; color: var(--ink-muted); font-family: var(--font-body); margin-top: 3px;">pagamento único</div>
+          </div>
+        </div>
+
+        <div style="font-size: 13.5px; color: var(--ink); line-height: 1.55;">
+          <div style="margin-bottom: 8px; display: flex; align-items: center; gap: 9px;">
+            <span style="color: #2F7A4C; font-weight: 800; font-size: 15px;">✓</span> <span><strong>+50 receitas naturais</strong> completas e passo a passo</span>
+          </div>
+          <div style="margin-bottom: 8px; display: flex; align-items: center; gap: 9px;">
+            <span style="color: #2F7A4C; font-weight: 800; font-size: 15px;">✓</span> <span><strong>Todos os 8 guias temáticos</strong> (digestão, pele, idade, etc.)</span>
+          </div>
+          <div style="margin-bottom: 8px; display: flex; align-items: center; gap: 9px;">
+            <span style="color: #2F7A4C; font-weight: 800; font-size: 15px;">✓</span> <span><strong>Todos os 4 bônus inclusos</strong> (cardápio, compras, petiscos e transição)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 9px;">
+            <span style="color: #2F7A4C; font-weight: 800; font-size: 15px;">✓</span> <span>Acesso imediato e <strong>garantia incondicional de 7 dias</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Principal (Aceite R$ 22,90) -->
+      <button type="button" id="upgrade-accept-btn" class="btn" style="width: 100%; border: none; cursor: pointer; padding: 17px 20px; margin-bottom: 12px; font-size: 16px;">
+        SIM! QUERO O COMPLETO POR R$ 22,90
+        <small style="display: block; font-size: 12px; font-weight: 500; opacity: 0.9; margin-top: 4px;">Aproveitar upgrade com todos os guias e bônus inclusos</small>
+      </button>
+
+      <!-- CTA Secundário (Recusa R$ 9,90) -->
+      <div>
+        <button type="button" id="upgrade-decline-btn" style="background: transparent; border: none; color: var(--ink-muted); font-size: 13.5px; font-weight: 600; text-decoration: underline; cursor: pointer; padding: 6px 12px; transition: color 0.15s;">
+          Não, prefiro o Essencial por R$ 9,90
+        </button>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 11.5px; color: var(--ink-muted);">
+        🔒 Pagamento 100% seguro • Acesso imediato • 7 dias de garantia
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT DE GERENCIAMENTO DOS DOIS KITS, UPGRADE POPUP & TRACKING COMPLEMENTAR -->
+  <script>
+  // CONFIGURAÇÃO CENTRAL DOS TRÊS DESTINOS DE CHECKOUT
+  // Nota: Preencha essentialUrl e upgradeUrl com os links reais da Kiwify assim que disponibilizados.
+  var CHEF_CANINO_CHECKOUTS = {
+    // Checkout 1: Kit Essencial (R$ 9,90)
+    essentialUrl: 'https://go.perfectpay.com.br/PPU38CQH0JS',
+    // Checkout 2: Kit Completo (R$ 27,90) - Ativo
+    completeUrl: 'https://go.perfectpay.com.br/PPU38CQH0JL',
+    // Checkout 3: Kit Completo com Oferta Upgrade (R$ 22,90)
+    upgradeUrl: 'https://go.perfectpay.com.br/PPU38CQH0JS'
+  };
+
+  (function() {
+    var upgradeOverlay = document.getElementById('upgrade-modal-overlay');
+    var btnEssential = document.getElementById('btn-kit-essential');
+    var btnComplete = document.getElementById('btn-kit-complete');
+    var upgradeCloseBtn = document.getElementById('upgrade-modal-close-btn');
+    var upgradeAcceptBtn = document.getElementById('upgrade-accept-btn');
+    var upgradeDeclineBtn = document.getElementById('upgrade-decline-btn');
+    var lastActiveElement = null;
+
+    function emitEvent(name, data) {
+      try {
+        if (typeof window.fbq === 'function') {
+          window.fbq('trackCustom', name, data || {});
+        }
+      } catch(e) {}
+      try {
+        if (window.dataLayer && Array.isArray(window.dataLayer)) {
+          window.dataLayer.push(Object.assign({ event: name }, data || {}));
+        }
+      } catch(e) {}
+    }
+
+    function openUpgradeModal() {
+      if (!upgradeOverlay) return;
+      lastActiveElement = document.activeElement;
+      upgradeOverlay.classList.add('active');
+      upgradeOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      emitEvent('select_kit_essential', { price: 9.90, currency: 'BRL' });
+      emitEvent('upgrade_modal_view', { offer_price: 22.90, original_price: 27.90 });
+      if (upgradeAcceptBtn) upgradeAcceptBtn.focus();
+    }
+
+    function closeUpgradeModal() {
+      if (!upgradeOverlay) return;
+      upgradeOverlay.classList.remove('active');
+      upgradeOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      emitEvent('upgrade_modal_close');
+      if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+        lastActiveElement.focus();
+      }
+    }
+
+    function goToCheckout(url, planName, priceStr) {
+      if (url && url.trim() !== '') {
+        var finalUrl = typeof window.chefCaninoBuildUrl === 'function' 
+          ? window.chefCaninoBuildUrl(url) 
+          : url;
+        window.location.href = finalUrl;
+      } else {
+        alert('O checkout do ' + planName + ' (R$ ' + priceStr + ') está sendo integrado pelo proprietário. Em instantes estará liberado!');
+      }
+    }
+
+    if (btnEssential) {
+      btnEssential.addEventListener('click', function(e) {
+        e.preventDefault();
+        openUpgradeModal();
+      });
+    }
+
+    if (btnComplete) {
+      btnComplete.addEventListener('click', function() {
+        emitEvent('select_kit_complete', { price: 27.90, currency: 'BRL' });
+      });
+    }
+
+    if (upgradeCloseBtn) {
+      upgradeCloseBtn.addEventListener('click', closeUpgradeModal);
+    }
+
+    if (upgradeOverlay) {
+      upgradeOverlay.addEventListener('click', function(e) {
+        if (e.target === upgradeOverlay) {
+          closeUpgradeModal();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && upgradeOverlay && upgradeOverlay.classList.contains('active')) {
+        closeUpgradeModal();
+      }
+    });
+
+    if (upgradeAcceptBtn) {
+      upgradeAcceptBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        emitEvent('upgrade_modal_accept', { price: 22.90, currency: 'BRL' });
+        goToCheckout(CHEF_CANINO_CHECKOUTS.upgradeUrl, 'Chef Canino Completo (Upgrade)', '22,90');
+      });
+    }
+
+    if (upgradeDeclineBtn) {
+      upgradeDeclineBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        emitEvent('upgrade_modal_decline', { price: 9.90, currency: 'BRL' });
+        goToCheckout(CHEF_CANINO_CHECKOUTS.essentialUrl, 'Chef Canino Essencial', '9,90');
+      });
+    }
+
+    window.chefCaninoOpenUpgrade = openUpgradeModal;
+    window.chefCaninoCloseUpgrade = closeUpgradeModal;
+  })();
+  </script>
+
+  <!-- POPUP DE SAÍDA (EXIT INTENT) -->
   <div id="exit-popup-overlay" class="exit-popup-overlay" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="exit-popup-card">
       <button class="exit-popup-close" id="exit-popup-close-btn" aria-label="Fechar">&times;</button>
@@ -2098,7 +2700,7 @@ Veja algumas páginas:<br>
 
         <p class="exit-popup-desc"><span class="exit-popup-tag">+50 receitas e mais 4 bônus!</span></p>
 
-        <a href="https://pay.kiwify.com.br/UGQXiP5" class="btn checkout-link exit-popup-cta">
+        <a href="https://go.perfectpay.com.br/PPU38CQH0JL" class="btn checkout-link exit-popup-cta">
           <span>QUERO O CHEF CANINO POR R$ 27,90</span>
           <small>Seu doguinho vai te agradecer!</small>
         </a>
