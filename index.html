@@ -1504,6 +1504,20 @@
       }
     }
 
+  
+    /* NOVOS BLOCOS EMOCIONAIS */
+    .cc-emo,.cc-visual{padding:52px 0;text-align:center}
+    .cc-visual{background:var(--paper-dim)}
+    .cc-narrow{max-width:760px}
+    .cc-text{font-size:16.5px;line-height:1.65;color:var(--ink-muted);margin:0 auto 22px;max-width:580px}
+    .cc-text strong{color:var(--ink)}
+    .cc-img{display:block;width:100%;border-radius:var(--radius-lg);object-fit:cover;box-shadow:0 10px 28px rgba(43,38,34,.12);height:auto}
+    .cc-43{aspect-ratio:4/3}.cc-11{aspect-ratio:1/1}
+    .cc-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .cc-caption{margin-top:16px;font-family:var(--font-title);font-style:italic;font-size:19px;color:var(--forest)}
+    .cc-steps{margin:22px auto;font-family:var(--font-mono);font-weight:600;font-size:13px;letter-spacing:.06em;color:var(--forest)}
+    .cc-micro{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:0 auto 20px;font-size:14.5px;font-weight:600;color:var(--forest)}
+    @media(max-width:640px){.cc-emo,.cc-visual{padding:40px 0}.cc-duo{grid-template-columns:1fr;gap:12px}.cc-caption{font-size:17px}}
   </style>
 
   <!-- Meta Pixel + rastreamento Chef Canino (LP -> Kiwify) -->
@@ -1636,7 +1650,7 @@
           <span>CHEF CANINO — COMIDA BOA PRA CACHORRO</span>
         </div>
       </div>
-      <h1 class="hero-title-print">APRENDA A FAZER COMIDA<br><span class="highlight">NATURAL E SAUDÁVEL</span><br>PARA SEU DOGUINHO!</h1>
+      <h1 class="hero-title-print">ELE FAZ PARTE DA FAMÍLIA.<br><span class="highlight">QUE TAL PREPARAR ALGO ESPECIAL PARA ELE?</span></h1>
    
       <div class="hero-mockup-wrapper">
         <img src="./mockup3.webp" alt="Chef Canino Kit Completo de Alimentação Natural" loading="eager" fetchpriority="high" decoding="async" width="580" height="410">
@@ -1646,25 +1660,9 @@
         </div>
       </div>
 
-      <p class="lede" style="max-width: 640px; margin: 18px auto 14px auto;">
-        <strong>Receitas práticas e nutritivas para cuidar da alimentação do seu melhor amigo, com orientações sobre ingredientes seguros, digestão, pele e cuidados em cada fase da vida.</strong><br>
-        <span style="color: var(--forest); font-weight: 700;">Ele faz parte da família. E merece uma alimentação feita com amor e cuidado.</span>
-        
-      </p>
-
-      <div style="background: var(--paper-card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 24px; max-width: 480px; margin: 16px auto 24px auto; text-align: left; box-shadow: 0 4px 16px rgba(43,38,34,0.06);">
-        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14.5px; font-weight: 600; color: var(--ink);">
-          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> +50 receitas naturais e práticas.</div>
-          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> Ingredientes seguros e preparo explicado.</div>
-          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> Cuidados com pele, digestão e envelhecimento.</div>
-          <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--forest); font-weight: 800;">✓</span> Orientações para uma alimentação mais saudável.</div>
-        </div>
-      </div>
-
-      <a href="#oferta" class="btn">
-        QUERO APRENDER AS RECEITAS
-        <small>Escolha seu kit • Pagamento único • Acesso imediato</small>
-      </a>
+      <p class="lede" style="max-width: 600px; margin: 16px auto 12px auto;"><strong>Aprenda a preparar receitas caseiras para seu cachorro, com ingredientes simples e um passo a passo fácil de seguir.</strong></p>
+      <div class="cc-micro"><span>✓ Receitas práticas</span><span>✓ Ingredientes do dia a dia</span><span>✓ Acesso digital após a compra</span></div>
+      <a href="#oferta" class="btn">🐾 QUERO PREPARAR ALGO ESPECIAL<small>A partir de R$ 9,90 • Acesso digital</small></a>
 
       <div class="security-badges">
         <span>🔒 Compra 100% Segura</span>
@@ -1674,12 +1672,35 @@
     </div>
   </section>
 
+  <!-- NOVO: BLOCO EMOCIONAL -->
+  <section class="cc-emo">
+    <div class="wrap cc-narrow">
+      <h2 class="section-title">Ele não sabe o que é uma receita. <span class="highlight">Mas sabe quando recebe carinho. ❤️</span></h2>
+      <p class="cc-text">Ele te espera chegar.<br>Faz festa quando você aparece.<br>E transforma os momentos mais simples em lembranças especiais.<br><strong>Agora imagine preparar algo com suas próprias mãos para ele.</strong></p>
+      <img class="cc-img cc-43" src="./cachorro-olhando-preparo.webp" alt="Tutora de camiseta vermelha cozinhando com Golden Retriever na cozinha" loading="lazy" decoding="async" width="1200" height="900">
+      <p class="cc-caption">Porque carinho também pode ser preparado na cozinha. 🐾</p>
+    </div>
+  </section>
+
+  <!-- NOVO: BLOCO VISUAL -->
+  <section class="cc-visual">
+    <div class="wrap cc-narrow">
+      <h2 class="section-title">VOCÊ NÃO PRECISA SER CHEF! <span class="highlight">BASTA SEGUIR O PASSO A PASSO DAS RECEITAS DO CHEF CANINO.</span></h2>
+      <p class="cc-text">Receitas práticas, com ingredientes e modo de preparo explicados para você acompanhar em casa.</p>
+      <div class="cc-duo">
+        <img class="cc-img cc-11" src="./petiscos-caseiros.webp" alt="Biscoitos caseiros em formato de patinhas e ossinhos" loading="lazy" decoding="async" width="800" height="800">
+        <img class="cc-img cc-11" src="./preparo-com-golden.webp" alt="Tutora preparando massa de biscoitos com Golden Retriever observando" loading="lazy" decoding="async" width="800" height="800">
+      </div>
+      <p class="cc-steps">ESCOLHA UMA RECEITA → SIGA O PASSO A PASSO → PREPARE COM CARINHO</p>
+      <div style="text-align:center"><a href="#oferta" class="btn">QUERO APRENDER AS RECEITAS</a></div>
+    </div>
+  </section>
+
   <!-- 2. VEJA UMA PRÉVIA DO CHEF CANINO (CARROSSEL AUTOMÁTICO DE PÁGINAS + CARDS DE BENEFÍCIOS) -->
   <section class="preview-section" id="previa-chef-canino">
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">POR DENTRO DO MATERIAL</div></div>
-      <h2 class="section-title">VOCÊ SABE O QUE ESTÁ COLOCANDO <span class="highlight">NO POTINHO DO SEU CACHORRO?</span></h2>
-      <p class="section-subtitle">Aprenda a preparar receitas naturais, entender os ingredientes e organizar melhor a alimentação de quem faz parte da sua família.</p>
+      <h2 class="section-title">Veja o que você vai aprender <span class="highlight">no Chef Canino! 🐾</span></h2>
 
       <!-- Carrossel Automático Contínuo de Páginas do Ebook -->
       <div class="preview-carousel-wrapper" id="previewCarouselContainer">
@@ -1718,160 +1739,13 @@
     </div>
   </section>
 
-  <!-- 3. PROVAS SOCIAIS (CARROSSEL WHATSAPP) -->
-  <section class="testimonials-section">
-    <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">QUEM JÁ TESTOU</div></div>
-      <h2 class="section-title">TUTORES QUE DECIDIRAM CUIDAR <span class="highlight">MELHOR DA ALIMENTAÇÃO DOS SEUS CÃES</span></h2>
-      <p class="section-subtitle">Relatos de tutores. Resultados variam de cão para cão.</p>
+  
 
-      <div class="carousel-container">
-        <div class="carousel-track" id="testimonialTrack">
-          <div class="carousel-item"><img src="./1.webp" alt="Depoimento WhatsApp Juliana Silva" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./2.webp" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./3.webp" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./4.webp" alt="Depoimento WhatsApp Gustavo" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./5.webp" alt="Depoimento WhatsApp Camila" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./6.webp" alt="Depoimento WhatsApp Diego" loading="lazy" decoding="async"></div>
-          <!-- Cópia duplicada para loop infinito 100% contínuo sem saltos -->
-          <div class="carousel-item"><img src="./1.webp" alt="Depoimento WhatsApp Juliana Silva" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./2.webp" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./3.webp" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./4.webp" alt="Depoimento WhatsApp Gustavo" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./5.webp" alt="Depoimento WhatsApp Camila" loading="lazy" decoding="async"></div>
-          <div class="carousel-item"><img src="./6.webp" alt="Depoimento WhatsApp Diego" loading="lazy" decoding="async"></div>
-        </div>
-        
-      </div>
+  
 
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 36px;">
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-title); font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--forest); line-height: 1;">+50</div>
-          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-top: 8px;">receitas no kit</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-title); font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--forest); line-height: 1;">7 dias</div>
-          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-top: 8px;">de garantia</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-title); font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--forest); line-height: 1;">100%</div>
-          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-top: 8px;">acesso digital imediato</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3.5 PROTOCOLOS FUNCIONAIS -->
-  <section class="protocols-section">
-    <div class="wrap">
-      <h2 class="section-title">DA DIGESTÃO À PELE: <span class="highlight">A BOA ALIMENTAÇÃO FAZ PARTE DOS CUIDADOS!</span></h2>
-      <p class="section-subtitle">Conheça os guias do Chef Canino para diferentes necessidades e fases da vida.</p>
-
-      <div class="protocols-grid">
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">🧘</div>
-          <div class="protocol-title">Guia Calma</div>
-        </div>
-
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">🦴</div>
-          <div class="protocol-title">Guia Mobilidade</div>
-        </div>
-
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">🍃</div>
-          <div class="protocol-title">Guia Barriguinha</div>
-        </div>
-
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">✨</div>
-          <div class="protocol-title">Guia Pelagem</div>
-        </div>
-
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">⚖️</div>
-          <div class="protocol-title">Guia Leveza</div>
-        </div>
-
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">🦷</div>
-          <div class="protocol-title">Guia Hálito Fresco</div>
-        </div>
-
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">🐾</div>
-          <div class="protocol-title">Guia Filhotes</div>
-        </div>
-
-        <div class="protocol-card">
-          <div class="protocol-icon-wrap">🤍</div>
-          <div class="protocol-title">Guia Focinho Grisalho</div>
-        </div>
-      </div>
-
-      <div class="protocols-footer-box">💡 Conteúdo educativo e prático para enriquecer os cuidados alimentares do seu cão.</div>
-    </div>
-  </section>
-
-  <!-- 4. VITRINE DE RECEITAS -->
-  <section class="vitrine-section">
-    <div class="wrap">
-      <div><div class="eyebrow">ANTES DE DECIDIR</div></div>
-      <h2 class="section-title">COMIDA FEITA COM AMOR <span class="highlight">TAMBÉM PODE ESTAR ERRADA</span></h2>
-      <p class="section-subtitle">Nem toda receita natural é completa para cães. E alguns ingredientes comuns na nossa cozinha podem fazer mal.</p>
-      <div class="vitrine-featured">
-        <img src="./prato.webp" alt="Prato variado com alimentação natural preparada para cães" loading="lazy" decoding="async" width="1000" height="1000">
-        <div class="vitrine-details">
-          <h3>Cozinhar sem guia é arriscado</h3>
-          <p>Você pode preparar uma refeição com todo o carinho e, ainda assim, não saber se ela atende às necessidades nutricionais do seu cachorro. Por isso, antes de mudar a alimentação, é fundamental entender ingredientes, quantidades e preparo seguro.</p>
-          <ul>
-            <li>Conheça ingredientes perigosos.</li>
-            <li>Evite erros comuns no preparo.</li>
-            <li>Entenda a importância de uma alimentação adequada.</li>
-          </ul>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:28px">
-        <a href="#oferta" class="btn">
-          QUERO APRENDER A ALIMENTAR COM MAIS SEGURANÇA
-          <small>Kits a partir de R$ 9,90 • Acesso imediato</small>
-        </a>
-      </div>
-    </div>
-  </section>
+  
 
 
-  <!-- 6. COMPARATIVO -->
-  <section class="comparison-section">
-    <div class="wrap">
-      <div style="text-align: center;"><div class="eyebrow">COMPARATIVO REAL</div></div>
-      <h2 class="section-title">A DIFERENÇA ENTRE IMPROVISAR <span class="highlight">E SABER O QUE ESTÁ FAZENDO</span></h2>
-
-      <div class="comparison-grid">
-        <div class="comp-col bad">
-          <div class="comp-header">✕ Sem o Chef Canino:</div>
-          <ul class="comp-list">
-            <li>Receitas aleatórias da internet.</li>
-            <li>Dúvidas sobre ingredientes permitidos.</li>
-            <li>Falta de organização e rotina alimentar.</li>
-            <li>Insegurança sobre o preparo correto.</li>
-          </ul>
-        </div>
-
-        <div class="comp-col good">
-          <div class="comp-header">✓ Com o Chef Canino:</div>
-          <ul class="comp-list">
-            <li>Receitas organizadas passo a passo.</li>
-            <li>Guias claros de ingredientes seguros.</li>
-            <li>Orientações práticas de preparo.</li>
-            <li>Materiais de planejamento alimentar.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. BÔNUS EXCLUSIVOS -->
   <section class="bonus-section">
     <div class="wrap">
       <div style="text-align: center;"><div class="eyebrow">BÔNUS EXCLUSIVOS</div></div>
@@ -1929,6 +1803,92 @@
     </div>
   </section>
 
+  <!-- NOVO: A RECOMPENSA -->
+  <section class="cc-emo">
+    <div class="wrap cc-narrow">
+      <h2 class="section-title">No fim, não é só sobre a comida. <span class="highlight">É sobre o carinho que existe nesse momento.</span></h2>
+      <img class="cc-img cc-43" style="object-position:center 40%" src="./golden-recebendo-petisco.webp" alt="Golden Retriever olhando petiscos caseiros na mão da tutora" loading="lazy" decoding="async" width="1200" height="900">
+      <p class="cc-caption">Ele talvez não entenda todo o cuidado por trás daquela receita. Mas você vai lembrar do olhar dele. ❤️</p>
+      <div style="text-align:center;margin-top:20px"><a href="#oferta" class="btn">QUERO VIVER ESSE MOMENTO</a></div>
+    </div>
+  </section>
+
+  <!-- 3. PROVAS SOCIAIS (CARROSSEL WHATSAPP) -->
+  <section class="testimonials-section">
+    <div class="wrap">
+      <div style="text-align: center;"><div class="eyebrow">QUEM JÁ TESTOU</div></div>
+      <h2 class="section-title">OLHA O QUE OUTROS TUTORES <span class="highlight">ESTÃO DIZENDO SOBRE O CHEF CANINO!</span></h2>
+      <p class="section-subtitle">Relatos de tutores. Resultados variam de cão para cão.</p>
+
+      <div class="carousel-container">
+        <div class="carousel-track" id="testimonialTrack">
+          <div class="carousel-item"><img src="./1.webp" alt="Depoimento WhatsApp Juliana Silva" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./2.webp" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./3.webp" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./4.webp" alt="Depoimento WhatsApp Gustavo" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./5.webp" alt="Depoimento WhatsApp Camila" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./6.webp" alt="Depoimento WhatsApp Diego" loading="lazy" decoding="async"></div>
+          <!-- Cópia duplicada para loop infinito 100% contínuo sem saltos -->
+          <div class="carousel-item"><img src="./1.webp" alt="Depoimento WhatsApp Juliana Silva" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./2.webp" alt="Depoimento WhatsApp Marcos Paulo" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./3.webp" alt="Depoimento WhatsApp Lucas Oliveira" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./4.webp" alt="Depoimento WhatsApp Gustavo" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./5.webp" alt="Depoimento WhatsApp Camila" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./6.webp" alt="Depoimento WhatsApp Diego" loading="lazy" decoding="async"></div>
+        </div>
+        
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 36px;">
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-title); font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--forest); line-height: 1;">+50</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-top: 8px;">receitas no kit</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-title); font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--forest); line-height: 1;">7 dias</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-top: 8px;">de garantia</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-title); font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--forest); line-height: 1;">100%</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-top: 8px;">acesso digital imediato</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. COMPARATIVO -->
+  <section class="comparison-section">
+    <div class="wrap">
+      <div style="text-align: center;"><div class="eyebrow">COMPARATIVO REAL</div></div>
+      <h2 class="section-title">CUIDADO COM AS RECEITAS QUE VOCÊ ENCONTRA <span class="highlight">NA INTERNET E IMPROVISA!</span></h2>
+
+      <div class="comparison-grid">
+        <div class="comp-col bad">
+          <div class="comp-header">✕ Sem o Chef Canino:</div>
+          <ul class="comp-list">
+            <li>Receitas aleatórias da internet.</li>
+            <li>Dúvidas sobre ingredientes permitidos.</li>
+            <li>Falta de organização e rotina alimentar.</li>
+            <li>Insegurança sobre o preparo correto.</li>
+          </ul>
+        </div>
+
+        <div class="comp-col good">
+          <div class="comp-header">✓ Com o Chef Canino:</div>
+          <ul class="comp-list">
+            <li>Receitas organizadas passo a passo.</li>
+            <li>Guias claros de ingredientes seguros.</li>
+            <li>Orientações práticas de preparo.</li>
+            <li>Materiais de planejamento alimentar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BÔNUS EXCLUSIVOS -->
+  
+
   <!-- 8. OFERTA COM DOIS KITS -->
   <section class="pricing-section" id="oferta">
     <div class="wrap">
@@ -1936,8 +1896,8 @@
       <div style="text-align: center; max-width: 760px; margin: 0 auto 28px auto;">
         <div class="eyebrow">ESCOLHA O SEU CHEF CANINO</div>
         <h2 class="section-title" style="margin-top: 8px; line-height: 1.2;">
-          SE ELE FAZ PARTE DA FAMÍLIA,<br>
-          <span class="highlight">QUAL CUIDADO VOCÊ QUER OFERECER?</span>
+          VEJA O QUE VOCÊ VAI RECEBER NO SEU E-MAIL<br>
+          <span class="highlight">E ESCOLHA O KIT QUE FAZ MAIS SENTIDO PARA VOCÊS!</span>
         </h2>
         <p class="section-subtitle" style="margin-top: 10px; font-size: 15px; color: var(--ink-muted); line-height: 1.45;">
           O Essencial ajuda você a começar. O Completo reúne mais receitas, guias e ferramentas para cuidar melhor da alimentação do seu cachorro.
