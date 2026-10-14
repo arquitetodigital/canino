@@ -1565,6 +1565,7 @@
 
     function track(name,data,id){fbq('track',name,data||{},{eventID:id||uid()})}
 
+    fbq('set','autoConfig',false,PIXEL_ID);
     fbq('init',PIXEL_ID);
     track('PageView');
     load();
